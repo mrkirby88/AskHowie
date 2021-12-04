@@ -13,8 +13,9 @@
                 role="alert"
                 v-if="this.$route.query.registration"
             >Thank you for registering, please sign in.</div>
-            <label for="username" class="sr-only">Username</label>
-            <input
+            <div id="username-group">
+              <label for="username" class="sr-only">Username</label>
+              <input
                 type="text"
                 id="username"
                 class="form-control"
@@ -23,8 +24,10 @@
                 required
                 autofocus
             />
-            <label for="password" class="sr-only">Password</label>
-            <input
+            </div>
+            <div id="password-group">
+              <label for="password" class="sr-only">Password</label>
+              <input
                 type="password"
                 id="password"
                 class="form-control"
@@ -32,6 +35,8 @@
                 v-model="user.password"
                 required
             />
+            </div>
+
             <router-link :to="{ name: 'register' }">Need an account?</router-link>
             <button class="form-control" type="submit">Sign in</button>
         </form>
@@ -79,30 +84,36 @@ export default {
 </script>
 
 <style>
-#login {
-    display: flex;
-    align-content: center;
-    justify-content: center;    
-}
 
 #outer-box {
-    display: flex;
-    background-color: rgba(160, 160, 160, 0.527);
-    justify-content: center;
-    align-content: center;
-    width: 400px;
-    height: 400px;
-    border-radius: 20px;
-}
-
-.form-control {
-    border-radius: 7px;
+  background-color: rgb(54, 186, 238);
+  width: 400px;
+  height: 400px;
+  border-radius: 3px;
+  align-self: center;
+  margin-top: 50px;
 }
 
 .form-signin {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+#username-group, #password-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input, button {
+  height: 1.5rem;
+  margin: 5px 0px 5px 0px;
+  border-radius: 6px;
+  border: 0px;
 }
 
 </style>

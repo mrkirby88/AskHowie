@@ -1,11 +1,29 @@
 <template>
-  <login-form />
+  <div>
+    <navigation />
+    <login-form />
+  </div>
+
 </template>
 
 <script>
 import loginForm from '@/components/LoginForm.vue';
+import navigation from '@/components/Navigation.vue';
 
 export default {
-  components: { loginForm },
+  components: {
+    loginForm,
+    navigation
+    }
 }
 </script>
+
+<style>
+
+  div {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+</style>

@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
-import store from '../store/index'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import Logout from '../views/Logout.vue';
+import Register from '../views/Register.vue';
+import store from '../store/index';
 
-Vue.use(Router)
+Vue.use(Router);
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
