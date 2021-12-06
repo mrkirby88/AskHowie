@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <div id="outer-box">
+    <div id="form-box">
         <form class="form-signin" @submit.prevent="login">
             <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
             <div
@@ -84,36 +84,5 @@ export default {
 </script>
 
 <style>
-
-#outer-box {
-  background-color: rgb(54, 186, 238);
-  width: 400px;
-  height: 400px;
-  border-radius: 3px;
-  align-self: center;
-  margin-top: 50px;
-}
-
-.form-signin {
-  height: 80%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: auto;
-}
-
-#username-group, #password-group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-input, button {
-  height: 1.5rem;
-  margin: 5px 0px 5px 0px;
-  border-radius: 6px;
-  border: 0px;
-}
 
 </style>
