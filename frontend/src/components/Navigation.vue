@@ -5,6 +5,7 @@
         </div>
         <div id="links">
             <router-link v-bind:to="{ name: 'home' }">Home</router-link>
+            <router-link v-bind:to="{ name: 'chatbox' }">Chat</router-link>
             <router-link v-bind:to="{ name: 'about'}">About</router-link>
             <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
         </div>
@@ -40,7 +41,7 @@ export default {
 
     #links {
         display: flex;
-        width: 20%;
+        width: 25%;
         flex-direction: row;
         justify-content: space-around;
         margin-right: 100px;
