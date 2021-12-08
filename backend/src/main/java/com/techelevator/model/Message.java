@@ -5,12 +5,12 @@ public class Message {
     private boolean containsKeyword;
     private boolean matchingMultipleKeywords;
 
-    public boolean isMatchingMultipleKeywords() {
-        return matchingMultipleKeywords;
+    public String getResponse() {
+        return response;
     }
 
-    public void setMatchingMultipleKeywords(boolean matchingMultipleKeywords) {
-        this.matchingMultipleKeywords = matchingMultipleKeywords;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
     public boolean isContainsKeyword() {
@@ -21,12 +21,11 @@ public class Message {
         this.containsKeyword = containsKeyword;
     }
 
-    public String getResponse() {
-        return response;
+    public boolean isMatchingMultipleKeywords() {
+        return matchingMultipleKeywords;
     }
 
-    public void setResponse(String response) {
-        this.response = response;
+    public void setMatchingMultipleKeywords(boolean matchingMultipleKeywords) {
+        this.matchingMultipleKeywords = matchingMultipleKeywords;
     }
-
 }
