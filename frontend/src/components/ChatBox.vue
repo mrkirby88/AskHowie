@@ -2,7 +2,7 @@
     <div>
         <div id="display-box">
             <div id="chat-content">
-                <p id="bot-face">+_+</p>
+                <h2 id="bot-face">+_+</h2>
                 <p v-for="entry in chatContents" v-bind:key="entry">
                     {{entry}}
                 </p>
@@ -40,11 +40,13 @@ export default {
     },
     methods: {
         newMessage() {
-            this.chatContents.push(this.userInput);
-            this.userInput = "";
-            this.$nextTick(() => {
-                document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            });
+            if (this.userInput != "") {
+                this.chatContents.push(this.userInput);
+                this.userInput = "";
+                this.$nextTick(() => {
+                    document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
+                });                
+            }
         }
     }
 }
@@ -65,7 +67,7 @@ export default {
 }
 
 #chat-content {
-    width: 95%;
+    width: 96%;
     max-height: 100%;
     position: absolute;
     bottom: 0;
@@ -89,8 +91,24 @@ export default {
     flex-direction: row;
     margin: auto;
 }
-#input-box:focus {
+
+p {
+    width: 90%;
+}
+
+textarea, input {
+    background-color: gray;
+}
+
+button {
+    background-color: rgb(41, 41, 167);
+    color:  rgb(214, 214, 214);
+}
+
+textarea:focus, input:focus {
     outline: none;
+    background-color:rgb(25, 34, 58);
+    color: rgb(214, 214, 214);
 }
 #bot-face {
     font-size: 100px;
