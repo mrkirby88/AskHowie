@@ -24,7 +24,7 @@ public class APIController {
         return (Message) messageDao.searchKeyword(keyword);
     }
 
-    @GetMapping(value = "/options", method = RequestMethod.GET)
+    @GetMapping(value = "/options")
     public List<Message> viewOptions() {
         List<String> keywordsRaw = messageDao.listKeywords();
         List<Message> options = new ArrayList<Message>();
