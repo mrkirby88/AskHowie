@@ -22,22 +22,22 @@ public class JdbcMessageDao implements MessageDao {
 
     @Override
     public Message searchKeyword(String keyword) {
-        String sqlSearch = "SELECT answer FROM responses JOIN keywords ON responses.id = keywords.keywordid WHERE keywords.words = ?";
+        String sqlSearch = "SELECT answer FROM responses JOIN keywords ON responses.id = keywords.keywordid WHERE keywords.keyword = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearch, keyword);
 
-        Message response = new Message();
-
-        if (results.next()) {
-            response.setResponse(results.getString("answer"));
-        } else response.setResponse("Keyword not recognized.");
-
-        return response;
-
+//        Message response = new Message();
+//
+//        if (results.next()) {
+//            response.setResponse(results.getString("answer"));
+//        } else response.setResponse("Keyword not recognized.");
+//
+//        return response;
+            return null;
     }
 
     @Override
     public List<String> listKeywords() {
-        String sqlSelectAll = "SELECT words FROM keywords";
+        String sqlSelectAll = "SELECT keyword FROM keywords";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
 
         List<String> allKeywords = new ArrayList<String>();
@@ -83,5 +83,6 @@ public class JdbcMessageDao implements MessageDao {
 
         return matchingKeywords;
     }
+
 
 }
