@@ -33,10 +33,11 @@ export default {
         newMessage() {
             this.chatContents.push(this.userInput);
             this.userInput = "";
-
-            let chat = this.$chatbox.querySelector("#chat-content");
-            chat.scrollTop = chat.scrollHeight;
-        }
+            
+            this.$nextTick(() => {
+            document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
+            }); 
+            }
     },
     mounted: {
         scrollDown() {
