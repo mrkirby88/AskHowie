@@ -1,7 +1,6 @@
 <template>
   <div>
     <navigation />
-    <h2>ChatBox Page</h2>
     <chat-box />
   </div>
 </template>
