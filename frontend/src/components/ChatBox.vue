@@ -2,6 +2,7 @@
     <div>
         <div id="display-box">
             <div id="chat-content">
+                <h2 id="bot-face">+_+</h2>
                 <p v-for="entry in chatContents" v-bind:key="entry">
                     {{entry}}
                 </p>
@@ -16,7 +17,8 @@
 
 <script>
 export default {
-      created() {
+    name: "chatbox",
+    created() {
         let r = Math.floor(Math.random() * this.greetings.length);
         this.chatContents.push(this.greetings[r]);
     },
@@ -35,6 +37,17 @@ export default {
                 "Hi, this is chat bot! I'm happy to take your questions as long as you aren't a .NET student +_+"
             ]
         }
+    },
+    methods: {
+        newMessage() {
+            if (this.userInput != "") {
+                this.chatContents.push(this.userInput);
+                this.userInput = "";
+                this.$nextTick(() => {
+                    document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
+                });                
+            }
+        }
     }
 }
 </script>
@@ -45,7 +58,8 @@ export default {
     height: 400px;
     width: 700px;
     margin: auto;
-    padding: 10px 30px;
+    margin-top: 60px;
+    padding: 30px;
     position: relative;
     background-color: rgb(25, 34, 58);
     color: rgb(214, 214, 214);
@@ -53,11 +67,12 @@ export default {
 }
 
 #chat-content {
-    width: 90%;
+    width: 96%;
     max-height: 100%;
     position: absolute;
     bottom: 0;
     overflow: auto;
+    overflow-wrap: break-word;
 }
 
 #chat-input {
@@ -76,7 +91,29 @@ export default {
     flex-direction: row;
     margin: auto;
 }
-#input-box:focus {
-    outline: none;
+
+p {
+    width: 90%;
 }
+
+textarea, input {
+    background-color: gray;
+}
+
+button {
+    background-color: rgb(41, 41, 167);
+    color:  rgb(214, 214, 214);
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    background-color:rgb(25, 34, 58);
+    color: rgb(214, 214, 214);
+}
+#bot-face {
+    font-size: 100px;
+    margin: auto;
+    padding: 0;
+}
+
 </style>

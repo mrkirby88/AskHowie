@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS keywords;
+
+CREATE TABLE "keywords"
+(
+        keyword CHARACTER VARYING (150) PRIMARY KEY,
+        reference CHARACTER VARYING (200)
+);
+
+INSERT INTO keywords (keyword, reference)
+VALUES ('loop', 'https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#loops');
