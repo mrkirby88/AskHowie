@@ -2,6 +2,8 @@
     <div>
         <div id="display-box">
             <div id="chat-content">
+                <div id="bot-ball">-</div>
+                <div id="bot-antenna">.</div>
                 <div id="bot-head">
                     <h2 id="bot-face">+_+</h2>
                 </div>
@@ -20,6 +22,7 @@ export default {
         this.$nextTick(() => {
             let r = Math.floor(Math.random() * this.greetings.length);
             this.buildText(this.greetings[r], true);
+            this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
         });
     },
     data () {
@@ -58,26 +61,12 @@ export default {
 
     methods: {
         buildText(text, isBot) {
+            if (!isBot && text === "") return;
+            if (text === this.userInput) this.userInput = "";
             let box = document.getElementById('chat-content');
             let p = document.createElement('p');
-            let div = this.makeDiv();
             p.innerText = text;
-            if (isBot) {
-                p.style.color = 'rgb(31, 33, 33)';
-                div.style.backgroundColor = ' rgb(233, 109, 252)';
-                div.style.alignSelf = 'flex-start';
-            } else {
-                p.style.color = 'rgb(31, 33, 33)';
-                div.style.backgroundColor = ' rgb(92, 227, 247)';
-                div.style.alignSelf = 'flex-end';
-                this.userInput = "";
-            }
-            p.style.textAlign = 'justify';
-            p.style.margin = '0';
-            div.style.width = '50%';
-            div.style.padding = '20px';
-            div.style.margin = '10px';
-            div.insertAdjacentElement('beforeend', p);
+            let div = this.styleElement(p, isBot);
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
@@ -86,6 +75,36 @@ export default {
         makeDiv() {
             let div = document.createElement('div');
             div.style.borderRadius = '15px';
+            return div;
+        },
+        buildLink(href, innerText) {
+            let box = document.getElementById('chat-content');
+            let a = document.createElement('a');
+            a.innerText = innerText;
+            a.href = href;
+            let div = this.styleElement(a, true);
+            box.insertAdjacentElement('beforeend', div);
+            this.$nextTick(() => {
+                document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
+            }); 
+        },
+        styleElement(e, isBot) {
+            let div = this.makeDiv();
+            if (isBot) {
+                e.style.color = 'white';
+                div.style.backgroundColor = 'rgb(233, 109, 252)';
+                div.style.alignSelf = 'flex-start';
+            } else {
+                e.style.color = 'rgb(31, 33, 33)';
+                div.style.backgroundColor = ' rgb(92, 227, 247)';
+                div.style.alignSelf = 'flex-end';
+            }
+            e.style.textAlign = 'justify';
+            e.style.margin = '0';
+            div.style.width = '50%';
+            div.style.padding = '20px';
+            div.style.margin = '10px';
+            div.insertAdjacentElement('beforeend', e);
             return div;
         }
     }
@@ -114,7 +133,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0;
+    top: auto;
     overflow: auto;
     overflow-wrap: break-word;
 }
@@ -154,16 +173,35 @@ textarea:focus, input:focus {
     background-color:rgb(25, 34, 58);
     color: rgb(214, 214, 214);
 }
-#bot-face {
-    font-size: 100px;
+#bot-ball {
+    background-color: orange;
+    color: orange;
+    width: 25px;
+    line-height: 25px;
+    margin: 5px auto -2px auto;
+    border-radius: 50%;
+    float: none;
+}
+#bot-antenna {
+    background-color: gray;
+    color: gray;
+    line-height: 30px;
+    width: 10px;
     margin: auto;
+}
+#bot-face {
+    margin: 0 5px 0 5px;
+    font-size: 100px;
     padding: 0;
+    padding-bottom: 10px;
     color: rgb(92, 255, 92);
+    line-height: 5rem;
 }
 #bot-head {
-    padding: 5px 5px 20px 5px;
+    padding: 0 5px 15px 5px;
+    margin: auto;
+    margin-bottom: 20px;
     background-color: gray;
-    width: 250px;
     border-radius: 30px;
 }
 
