@@ -26,8 +26,7 @@ export default {
 <style scoped>
 
     #nav {
-        background-color: rgba(251,251,251,255)
-;
+        background-color: rgba(251,251,251,255);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
