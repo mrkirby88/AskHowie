@@ -114,7 +114,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0;
+    top: auto;
     overflow: auto;
     overflow-wrap: break-word;
 }
