@@ -5,7 +5,7 @@
                 <div id="bot-ball">-</div>
                 <div id="bot-antenna">.</div>
                 <div id="bot-head">
-                    <h2 id="bot-face">+_+</h2>
+                    <h2 id="bot-face">{{face}}</h2>
                 </div>
             </div>        
         </div>
@@ -24,6 +24,8 @@ export default {
     created() {
         this.$nextTick(() => {
             let r = Math.floor(Math.random() * this.greetings.length);
+            let rFace = Math.floor(Math.random() * this.faces.length);
+            this.face = this.faces[rFace];
             this.buildText(this.greetings[r], true);
             this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
             this.getJoke();
@@ -32,6 +34,7 @@ export default {
     data () {
         return {
             userInput: "",
+            face: "+_+",
 
             /*
                 <img>:  {
@@ -53,6 +56,14 @@ export default {
                 "Is that an RTX 3090 in your pocket or are you happy to see me? +_+",
                 `Hi ${this.$store.state.user.username}, this is chat bot! I'm happy to take your questions as long as you aren't a .NET student +_+`,
                 `Hi ${this.$store.state.user.username}!`
+            ],
+
+            faces: [
+                "+o+",
+                "^_^",
+                "d^_^b",
+                "+_+",
+                "^o^"
             ]
         }
     },
