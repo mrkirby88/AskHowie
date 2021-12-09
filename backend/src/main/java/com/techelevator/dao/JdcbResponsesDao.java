@@ -18,17 +18,9 @@ public class JdcbResponsesDao implements ResponsesDao{
     }
 
     @Override
-    public Responses getResponse(String title) {
-        Responses responses = null;
-        String sql = "SELECT answer \n" +
-                "FROM responses \n" +
-                "JOIN keywords ON responses.id = keywords.keywordID " +
-                "WHERE keyword LIKE ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
-        if(results.next()){
-            responses = mapRowToTransfers(results);
-        }
-        return responses;
+    public String getResponse(String userInput) {
+        String sql = "select answer from responses join keywords on responses.id = keywordID where keyword ilike ?";
+        return jdbcTemplate.queryForObject(sql, String.class, userInput);
     }
 
     @Override
@@ -43,7 +35,18 @@ public class JdcbResponsesDao implements ResponsesDao{
         return responses;
     }
 
-    public Responses mapRowToTransfers(SqlRowSet rowSet) {
+    @Override
+    public List<String> getAllTitles() {
+        String sql = "select title from responses;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        List<String> responses = new ArrayList<>();
+        while (rowSet.next()) {
+            responses.add(rowSet.getString("title"));
+        }
+        return responses;
+    }
+
+    private Responses mapRowToTransfers(SqlRowSet rowSet) {
         Responses responses = new Responses();
         responses.setId(rowSet.getLong("id"));
         responses.setTitle(rowSet.getString("title"));
