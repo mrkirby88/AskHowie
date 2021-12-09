@@ -22,8 +22,13 @@ public class ResponsesController {
         return responsesDao.getAllResponses();
     }
 
-    @RequestMapping(path = "/responses/{title}", method = RequestMethod.GET)
-    public Responses getResponse(@PathVariable String title){
-        return responsesDao.getResponse(title);
+    @RequestMapping(path = "api/responses/{userInput}", method = RequestMethod.GET)
+    public String getResponse(@PathVariable String userInput){
+        return responsesDao.getResponse(userInput);
+    }
+
+    @RequestMapping(path = "/api/responses/titles", method = RequestMethod.GET)
+    public List<String> getAllTitles() {
+        return responsesDao.getAllTitles();
     }
 }

@@ -8,7 +8,8 @@ import java.util.List;
 @Component
 public interface ResponsesDao {
 
-    Responses getResponse(String title);
+    String getResponse(String title);
     List<Responses> getAllResponses();
+    List<String> getAllTitles();
 
 }
