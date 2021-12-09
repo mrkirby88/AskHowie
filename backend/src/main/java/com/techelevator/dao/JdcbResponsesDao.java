@@ -18,16 +18,18 @@ public class JdcbResponsesDao implements ResponsesDao{
     }
 
     @Override
-    public Responses getResponse(String title) {
-        Responses responses = null;
+    public Responses getResponse(String answer) {
         String sql = "SELECT answer \n" +
                 "FROM responses \n" +
-                "JOIN keywords ON responses.id = keywords.keywordID " +
-                "WHERE keyword LIKE ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
-        if(results.next()){
-            responses = mapRowToTransfers(results);
-        }
+                "JOIN keywords ON responses.id = keywords.keywordid " +
+                "WHERE keywords.keyword LIKE ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, answer);
+        Responses responses = new Responses();
+
+        if (results.next()) {
+            responses.setAnswer(responses.getAnswer());
+        } else responses.setAnswer("Keyword not recognized.");
+
         return responses;
     }
 

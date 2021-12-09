@@ -32,7 +32,7 @@ public class JdbcMessageDao implements MessageDao {
 //        } else response.setResponse("Keyword not recognized.");
 //
 //        return response;
-            return null;
+            return (Message) results;
     }
 
     @Override
