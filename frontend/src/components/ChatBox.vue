@@ -18,6 +18,7 @@
 
 <script>
 import jokesApi from '@/services/JokesWebApi.js';
+import catFactApi from '@/services/CatFactWebApi.js';
 
 export default {
     name: "chatbox",
@@ -27,6 +28,7 @@ export default {
             this.buildText(this.greetings[r], true);
             this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
             this.getJoke();
+            this.getCatFact();
         });
     },
     data () {
@@ -117,7 +119,14 @@ export default {
                 }
                 this.buildText(joke, true);
             });
-        }
+        },
+        getCatFact() {
+            let fact = "";
+            catFactApi.getCatFact().then(r => {
+                fact = r.data.fact;
+                this.buildText(fact, true);
+            });
+        },
     }
 }
 </script>
