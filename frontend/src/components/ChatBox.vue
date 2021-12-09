@@ -15,7 +15,10 @@
         </div>
     </div>
 </template>
+
 <script>
+import jokesApi from '@/services/JokesWebApi.js';
+
 export default {
     name: "chatbox",
     created() {
@@ -23,6 +26,7 @@ export default {
             let r = Math.floor(Math.random() * this.greetings.length);
             this.buildText(this.greetings[r], true);
             this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
+            this.getJoke();
         });
     },
     data () {
@@ -34,12 +38,6 @@ export default {
                         "type": "img"
                         "src": ""
                         "alt": ""
-                        }
-
-                <a>:    {
-                        "type": "link"
-                        "href": ""
-                        "innerText": ""
                         }
 
             */
@@ -106,6 +104,19 @@ export default {
             div.style.margin = '10px';
             div.insertAdjacentElement('beforeend', e);
             return div;
+        },
+        getJoke() {
+            let joke = "";
+            jokesApi.getJoke().then(r => {
+                if (r.data.type === 'single') {
+                    joke = r.data.joke;
+                } else {
+                    joke += r.data.setup;
+                    joke += "\n";
+                    joke += r.data.delivery;
+                }
+                this.buildText(joke, true);
+            });
         }
     }
 }
