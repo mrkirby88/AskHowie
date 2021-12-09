@@ -2,12 +2,14 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ResponsesDao;
 import com.techelevator.model.Responses;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@CrossOrigin
+@PreAuthorize("isAuthenticated()")
 public class ResponsesController {
     private ResponsesDao responsesDao;
 
@@ -15,7 +17,12 @@ public class ResponsesController {
         this.responsesDao = responsesDao;
     }
 
-    @RequestMapping(value = "responses/{title}", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/responses",  method = RequestMethod.GET)
+    public List<Responses> getAllResponses() {
+        return responsesDao.getAllResponses();
+    }
+
+    @RequestMapping(path = "/responses/{title}", method = RequestMethod.GET)
     public Responses getResponse(@PathVariable String title){
         return responsesDao.getResponse(title);
     }
