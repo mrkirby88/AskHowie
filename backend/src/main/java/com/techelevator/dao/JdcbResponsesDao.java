@@ -46,7 +46,7 @@ public class JdcbResponsesDao implements ResponsesDao{
         return responses;
     }
 
-    public Responses mapRowToTransfers(SqlRowSet rowSet) {
+    private Responses mapRowToTransfers(SqlRowSet rowSet) {
         Responses responses = new Responses();
         responses.setId(rowSet.getLong("id"));
         responses.setTitle(rowSet.getString("title"));
