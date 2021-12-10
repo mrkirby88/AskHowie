@@ -20,6 +20,10 @@
     border: 0px;
   }
 
+  input:focus {
+    outline: none;
+  }
+
   #form-box {
     width: 400px;
     height: 400px;

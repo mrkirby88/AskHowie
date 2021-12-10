@@ -2,11 +2,7 @@
     <div>
         <div id="display-box">
             <div id="chat-content">
-                <div id="bot-ball">-</div>
-                <div id="bot-antenna">.</div>
-                <div id="bot-head">
-                    <h2 id="bot-face">{{face}}</h2>
-                </div>
+                <bot />
             </div>        
         </div>
         <div id="input-box">
@@ -19,9 +15,14 @@
 <script>
 import jokesApi from '@/services/JokesWebApi.js';
 import catFactApi from '@/services/CatFactWebApi.js';
+import bot from '@/components/BotHead.vue';
 
 export default {
     name: "chatbox",
+    components: {
+        bot
+    },
+
     created() {
         this.$nextTick(() => {
             let r = Math.floor(Math.random() * this.greetings.length);
@@ -32,11 +33,10 @@ export default {
             this.buildText(this.greetings[r], true);
         });
     },
+
     data () {
         return {
             userInput: "",
-            face: "+_+",
-
 
             /*
                 <img>:  {
@@ -47,7 +47,6 @@ export default {
 
             */
 
-
             greetings: [
                 `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
                 `Howdy hey ${this.$store.state.user.username}! You look like you need some knowledge! I mean, uh, you look really smart! Sorry, it's my first day +_+`,
@@ -55,17 +54,7 @@ export default {
                 "01001000 01100101 01101100 01101100 01101111 00100000 01101000 01110101 01101101 01100001 01101110 00101100 00100000 01101000 01101111 01110111 00100000 01100011 01100001 01101110 00100000 01001001 00100000 01101000 01100101 01101100 01110000 00100000 01111001 01101111 01110101 00111111 +_+",
                 `Yes, mom, I'll call you tomorrow. Mom, I have to go to work! loveyoubye. *sigh* Sorry about that ${this.$store.state.user.username}, how can I help? +_+`,
                 "Everyone asks the chat bot how to set a base case for recursive functions but no one asks chat bot how chat bot is doing +_+",
-                "Is that an RTX 3090 in your pocket or are you happy to see me? +_+",
-                `Hi ${this.$store.state.user.username}, this is chat bot! I'm happy to take your questions as long as you aren't a .NET student +_+`,
                 `Hi ${this.$store.state.user.username}! +_+`
-            ],
-
-            faces: [
-                "+o+",
-                "^_^",
-                "d^_^b",
-                "+_+",
-                "^o^"
             ]
         }
     },
@@ -220,37 +209,6 @@ textarea:focus, input:focus {
     outline: none;
     background-color:rgb(25, 34, 58);
     color: rgb(214, 214, 214);
-}
-#bot-ball {
-    background-color: orange;
-    color: orange;
-    width: 25px;
-    line-height: 25px;
-    margin: 5px auto -2px auto;
-    border-radius: 50%;
-    float: none;
-}
-#bot-antenna {
-    background-color: gray;
-    color: gray;
-    line-height: 30px;
-    width: 10px;
-    margin: auto;
-}
-#bot-face {
-    margin: 0 5px 0 5px;
-    font-size: 100px;
-    padding: 0;
-    padding-bottom: 10px;
-    color: rgb(92, 255, 92);
-    line-height: 5rem;
-}
-#bot-head {
-    padding: 0 5px 15px 5px;
-    margin: auto;
-    margin-bottom: 20px;
-    background-color: gray;
-    border-radius: 30px;
 }
 
 </style>
