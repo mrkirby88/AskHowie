@@ -115,7 +115,7 @@ export default {
         styleElement(e, isBot) {
             let div = this.makeDiv(isBot);
             if (isBot) {
-                e.style.color = 'white';
+                e.style.color = '#100606';
             } else {
                 e.style.color = 'rgb(31, 33, 33)';
             }
