@@ -61,7 +61,7 @@ export default {
                 "Welcome, I'll take your clothes, your boots, and your motorcycle.",
                 "You're back.",
                 "Welcome! Stay awhile and listen.",
-                "Welcome, I hope you think a very nice guy!",
+                "Welcome, I hope you think I am a very nice Chatbot!",
                 "Hello! Come quietly, or there will be... Trouble!",
                 `Welcome to Chatbot! I hope you should find everything that you're looking for. If not, please let me know, ${this.$store.state.user.username}. My users will fix me. They fix everything.`,
                 "Bad code neutralized. Ladies and gentlemen, objective completed.",
