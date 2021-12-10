@@ -54,4 +54,52 @@ public class JdcbResponsesDao implements ResponsesDao{
         return responses;
     }
 
+//    @Override
+//    public List<String> listKeywords() {
+//        String sqlSelectAll = "SELECT keyword FROM keywords";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
+//
+//        List<String> allKeywords = new ArrayList<String>();
+//
+//        while (results.next()) {
+//            allKeywords.add(results.getString("words"));
+//        }
+//
+//        return allKeywords;
+//
+//    }
+//
+//    @Override
+//    public boolean containsKeyword(String userMessage) {
+//        boolean keywordCheck = false;
+//        String noSpaces = userMessage.replaceAll("\\s","");
+//        String allDown = noSpaces.toLowerCase();
+//
+//        List<String> keywords = listKeywords();
+//
+//        for(String word : keywords) {
+//            if (allDown.contains(word)) {
+//                keywordCheck = true;
+//            }
+//        }
+//
+//        return keywordCheck;
+//    }
+//
+//    @Override
+//    public List<String> scanKeywords(String userMessage) {
+//        List<String> matchingKeywords = new ArrayList<String>();
+//        String noSpaces = userMessage.replaceAll("\\s","");
+//        String allDown = noSpaces.toLowerCase();
+//
+//        List<String> keywords = listKeywords();
+//
+//        for(String word : keywords) {
+//            if (allDown.contains(word)) {
+//                matchingKeywords.add(word);
+//            }
+//        }
+//
+//        return matchingKeywords;
+//    }
 }

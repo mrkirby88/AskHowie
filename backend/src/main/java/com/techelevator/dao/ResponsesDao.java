@@ -11,5 +11,6 @@ public interface ResponsesDao {
     String getResponse(String title);
     List<Responses> getAllResponses();
     List<String> getAllTitles();
-
+//    boolean containsKeyword(String userMessage);
+//    List<String> scanKeywords(String userMessage);
 }
