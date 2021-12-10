@@ -39,6 +39,16 @@
             required
           />
         </div>
+        <div id="language-group">
+          <label for="languages" class="sr-only">Choose your preferred language</label>
+          <select
+            name="languages"
+            id="languages"
+            v-model="user.language">
+          <option value="Java">Java</option>
+          <option value="C#">C#</option>
+          </select>
+        </div>
         <router-link class="haveAccount" :to="{ name: 'login' }">Have an account?</router-link>
         <button id="button" class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
@@ -60,6 +70,7 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        language: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -70,6 +81,9 @@ export default {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+      } else if (this.user.language === '') {
+        this.registrationErrors = true;
+        this.registrationErrorMsg = 'Please choose your preferred language.';
       } else {
         authService
           .register(this.user)
