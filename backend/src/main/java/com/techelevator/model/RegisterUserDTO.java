@@ -10,8 +10,6 @@ public class RegisterUserDTO {
     private String password;
     @NotEmpty
     private String confirmPassword;
-    @NotEmpty
-    private String language;
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
@@ -45,13 +43,5 @@ public class RegisterUserDTO {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 }

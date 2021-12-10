@@ -14,17 +14,15 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
-   private String language;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities, String language) {
+   public User(Long id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
       this.activated = true;
-      this.language = language;
    }
 
    public Long getId() {
@@ -65,14 +63,6 @@ public class User {
 
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
-   }
-
-   public String getLanguage() {
-      return language;
-   }
-
-   public void setLanguage(String language) {
-      this.language = language;
    }
 
    public void setAuthorities(String authorities) {

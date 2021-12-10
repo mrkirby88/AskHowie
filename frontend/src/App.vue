@@ -13,17 +13,16 @@
     font-family: 'Inter', sans-serif;
   }
 
-  input, button, select {
+  input, button {
     height: 1.5rem;
     margin: 5px 0px 5px 0px;
     border-radius: 6px;
     border: 0px;
-    outline: none;
   }
 
   #form-box {
     width: 400px;
-    height: 500px;
+    height: 400px;
     background-color: rgb(54, 186, 238);
     border-radius: 3px;
     align-self: center;
