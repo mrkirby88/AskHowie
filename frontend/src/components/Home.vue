@@ -17,4 +17,10 @@
 </script>
 
 <style scoped>
+h1{
+    color:#dcdceb;
+}
+p{
+    color: #dcdceb;
+}
 </style>
