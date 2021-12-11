@@ -13,13 +13,35 @@ export default {
     data() {
         return {
             face: "+_+",
+            mainFace: "+_+",
+            altFace: "+.+",
             faces: [
                 "+o+",
                 "^_^",
                 "d^_^b",
                 "+_+",
                 "^o^"
-            ]
+            ],
+            intId: null,
+            count: 0
+        }
+    },
+    methods: {
+        talk() {
+            this.count = 8;
+            if (!this.intId) {
+                this.intId = setInterval(this.change, 100);
+            }
+        },
+        change() {
+            if (this.count === 0) {
+                clearInterval(this.intId);
+                this.intId = null;
+            }
+            else {
+                this.face = this.face === this.mainFace ? this.altFace : this.mainFace;
+                this.count--;
+            }
         }
     }
 }
@@ -43,8 +65,9 @@ export default {
     margin: auto;
 }
 #bot-face {
+    font-family: 'JetBrains Mono', monospace;
     margin: 0 5px 0 5px;
-    font-size: 100px;
+    font-size: 90px;
     padding: 0;
     padding-bottom: 10px;
     color: rgb(92, 255, 92);

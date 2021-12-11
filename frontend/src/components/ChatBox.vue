@@ -1,13 +1,15 @@
 <template>
     <div>
         <div id="display-box">
+            <div>
+                <bot ref="bot" />
+            </div>
             <div id="chat-content">
-                <bot />
             </div>        
         </div>
         <div id="input-box">
-            <input id="chat-input" type="text" v-model="userInput" @keyup.enter="buildText(userInput, false); parseInput()">
-            <button id="enter-button" @click.prevent="buildText(userInput, false); parseInput()">Chat</button>
+            <input id="chat-input" type="text" v-model="userInput" @keyup.enter="submit(userInput, false)">
+            <button id="enter-button" @click.prevent="submit(userInput, false)">Chat</button>
         </div>
     </div>
 </template>
@@ -54,9 +56,9 @@ export default {
                 "01001000 01100101 01101100 01101100 01101111 00100000 01101000 01110101 01101101 01100001 01101110 00101100 00100000 01101000 01101111 01110111 00100000 01100011 01100001 01101110 00100000 01001001 00100000 01101000 01100101 01101100 01110000 00100000 01111001 01101111 01110101 00111111 +_+",
                 `Yes, mom, I'll call you tomorrow. Mom, I have to go to work! loveyoubye. *sigh* Sorry about that ${this.$store.state.user.username}, how can I help? +_+`,
                 "Everyone asks the chat bot how to set a base case for recursive functions but no one asks chat bot how chat bot is doing +_+",
-                "Listen and understand... I do not feel pity, or remorse, or fear, and I absolutely will not stop... EVER... until you are de... learned!",
+                "Listen and understand... I do not feel pity, or remorse, or fear, and I absolutely will not stop, EVER, until you are ... learned!",
                 "Come with me if you want to learn.",
-                "Hello! I'm a friend of Sarah Connor.",
+                `Hello ${this.$store.state.user.username}! I'm a friend of Sarah Connor.`,
                 "Welcome, I'll take your clothes, your boots, and your motorcycle.",
                 "You're back.",
                 "Welcome! Stay awhile and listen.",
@@ -64,9 +66,8 @@ export default {
                 "Hello! Come quietly, or there will be... Trouble!",
                 `Welcome to Chatbot! I hope you should find everything that you're looking for. If not, please let me know, ${this.$store.state.user.username}. My users will fix me. They fix everything.`,
                 "Bad code neutralized. Ladies and gentlemen, objective completed.",
-                "Hello! It looks to be a nice night for a walk!",
-                "Welcome... Please no disassemble...",
-                `Welcome ${this.$store.state.user.username}! Malfunction. Need input.`,
+                `Hello ${this.$store.state.user.username}! It looks to be a nice night for a walk!`,
+                `Welcome ${this.$store.state.user.username}! Malfunction. Need input. No disassemble!`,
                 `Welcome ${this.$store.state.user.username}! Nice computer! I'd buy that for a dollar!`,
                 `Hello ${this.$store.state.user.username}! I need a vacation...`,
                 `Hi ${this.$store.state.user.username}! +_+`
@@ -75,9 +76,14 @@ export default {
     },
 
     methods: {
+
+        submit(text, isBot) {
+            if (!isBot && text === "") return;
+            this.buildText(text, isBot);
+            this.parseInput();
+        },
         
         buildText(text, isBot) {
-            if (!isBot && text === "") return;
             let box = document.getElementById('chat-content');
             let p = document.createElement('p');
             p.innerText = text;
@@ -85,7 +91,8 @@ export default {
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            }); 
+            });
+            if (isBot) this.$refs.bot.talk();
         },
 
         makeDiv(isBot) {
@@ -113,7 +120,8 @@ export default {
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            }); 
+            });
+            this.$refs.bot.talk();
         },
 
         styleElement(e, isBot) {
@@ -166,11 +174,13 @@ export default {
 <style scoped>
 
 #display-box {
-    height: 400px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
     width: 700px;
     margin: auto;
     margin-top: 60px;
-    padding: 30px;
+    padding: 5px 30px 30px 30px;
     position: relative;
     background-color: rgb(25, 34, 58);
     color: rgb(214, 214, 214);
@@ -180,12 +190,11 @@ export default {
 #chat-content {
     display: flex;
     width: 100%;
-    max-height: 100%;
+    max-height: 450px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: auto;
     overflow: auto;
     overflow-wrap: break-word;
 }
