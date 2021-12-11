@@ -8,4 +8,5 @@ import java.util.List;
 @Component
 public interface KeywordsDao {
     List<String> getAllKeywords();
+    String keywordResponse(String keywordInput);
 }

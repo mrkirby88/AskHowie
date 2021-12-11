@@ -27,6 +27,12 @@ public class JdbcKeywords implements KeywordsDao{
         return keywords;
     }
 
+    @Override
+    public String keywordResponse(String keywordInput) {
+        String sql = "SELECT answer FROM responses JOIN keywords ON responses.id = keywordID WHERE keyword ILIKE ?";
+        return jdbcTemplate.queryForObject(sql, String.class, keywordInput);
+    }
+
     public Keywords mapRowToTransfers(SqlRowSet rowSet) {
         Keywords keywords = new Keywords();
         keywords.setKeywordID(rowSet.getLong("keywordID"));
