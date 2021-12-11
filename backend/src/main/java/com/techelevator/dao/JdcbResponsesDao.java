@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Keywords;
 import com.techelevator.model.Responses;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -44,6 +45,47 @@ public class JdcbResponsesDao implements ResponsesDao{
             responses.add(rowSet.getString("title"));
         }
         return responses;
+    }
+
+    @Override
+    public List<String> getAllKeywords() {
+        List<String> keywords = new ArrayList<>();
+        String sql = "SELECT keyword FROM keywords";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            keywords.add(rowSet.getString("keyword"));
+        }
+        return keywords;
+    }
+
+    @Override
+    public List<String> scanStringForKeyword(String userInput) {
+        List<String> keywordMatch = new ArrayList<>();
+        String getRidOfSpaces = userInput.replaceAll("//s","");
+        String lowerCase = getRidOfSpaces.toLowerCase();
+        List<String> keywords = getAllKeywords();
+
+        for(String word : keywords) {
+            if (lowerCase.contains(word)) {
+                keywordMatch.add(word);
+            }
+        }
+        return keywordMatch;
+    }
+
+    @Override
+    public boolean containsAKeyword(String userInput) {
+        boolean checkKeyword = false;
+        String getRidOfSpaces = userInput.replaceAll("//s","");
+        String toLowerCase = getRidOfSpaces.toLowerCase();
+        List<String> keywords = getAllKeywords();
+
+        for(String word : keywords) {
+            if (toLowerCase.contains(word)) {
+                checkKeyword = true;
+            }
+        }
+        return checkKeyword;
     }
 
     private Responses mapRowToTransfers(SqlRowSet rowSet) {
