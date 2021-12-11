@@ -77,7 +77,7 @@ const router = new Router({
       name: "help",
       component: Help,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]

@@ -18,6 +18,7 @@
 import jokesApi from '@/services/JokesWebApi.js';
 import catFactApi from '@/services/CatFactWebApi.js';
 import bot from '@/components/BotHead.vue';
+import cbApi from '@/services/CBWebApi.js';
 
 export default {
     name: "chatbox",
@@ -160,12 +161,18 @@ export default {
             });
         },
 
+        queryServer(input) {
+            cbApi.submitQuery(input).then(r => {
+                this.buildText(r.data, true);
+            })
+        },
+
         parseInput() {
             let input = this.userInput.toLowerCase();
             if (input.includes("joke")) this.getJoke();
             else if (input.includes("cat")) this.getCatFact();
-            else if (input.includes("about")) this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
-            else {this.buildText("Sorry, I can't process that request +_+", true)}
+            else if (input.includes("about chatbot") || input.includes("about yourself")) this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
+            else {this.queryServer(input)}
             this.userInput = "";
         }
     }

@@ -61,14 +61,16 @@ public class JdcbResponsesDao implements ResponsesDao{
     @Override
     public List<String> scanStringForKeyword(String userInput) {
         List<String> keywordMatch = new ArrayList<>();
-        String getRidOfSpaces = userInput.replaceAll("//s","");
-        String lowerCase = getRidOfSpaces.toLowerCase();
+        String lowerCase = userInput.toLowerCase();
         List<String> keywords = getAllKeywords();
 
         for(String word : keywords) {
-            if (lowerCase.contains(word)) {
-                keywordMatch.add(word);
+            if (lowerCase.contains(word.toLowerCase())) {
+                keywordMatch.add(getResponse(word));
             }
+        }
+        if (keywordMatch.size() == 0) {
+            keywordMatch.add("Sorry, I can't process that request +_+");
         }
         return keywordMatch;
     }

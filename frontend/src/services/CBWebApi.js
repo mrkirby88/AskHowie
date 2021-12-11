@@ -1,7 +1,11 @@
 import axios from 'axios';
+import store from '@/store/index.js';
 
 const http = axios.create({
-    baseURL: "https://localhost:8080",
+    baseURL: "http://localhost:8080",
+    headers: {
+        Authorization: 'Bearer ' + store.state.token
+    }
     });
 
 export default {
@@ -10,7 +14,7 @@ export default {
         return http.get("/keywords");
     },
     
-    submitQuery(keyword) {
-        return http.get(`/responses/${keyword}`);
+    submitQuery(input) {
+        return http.get(`/search/${input}`);
     }
 }

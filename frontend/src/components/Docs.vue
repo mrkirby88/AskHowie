@@ -8,10 +8,19 @@
 </template>
 
 <script>
+import cbApi from '@/services/CBWebApi.js';
+
 export default {
+
+    beforeMount() {
+        cbApi.getKeywords().then(r => {
+            this.keywords = r.data;
+        });
+    },
+
     data() {
         return {
-            keywords: ["word", "other word", "lalala"]
+            keywords: []
         }
     }
 }
