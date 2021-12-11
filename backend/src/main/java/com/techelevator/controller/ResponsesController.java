@@ -5,6 +5,7 @@ import com.techelevator.model.Responses;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,11 +14,11 @@ import java.util.List;
 public class ResponsesController {
     private ResponsesDao responsesDao;
 
-    public ResponsesController(ResponsesDao responsesDao){
+    public ResponsesController(ResponsesDao responsesDao) {
         this.responsesDao = responsesDao;
     }
 
-    @RequestMapping(path = "/api/responses",  method = RequestMethod.GET)
+    @RequestMapping(path = "/api/responses", method = RequestMethod.GET)
     public List<Responses> getAllResponses() {
         return responsesDao.getAllResponses();
     }
@@ -31,4 +32,6 @@ public class ResponsesController {
     public List<String> getAllTitles() {
         return responsesDao.getAllTitles();
     }
+
+
 }
