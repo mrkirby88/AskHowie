@@ -71,7 +71,8 @@ export default {
                 `Welcome ${this.$store.state.user.username}! Nice computer! I'd buy that for a dollar!`,
                 `Hello ${this.$store.state.user.username}! I need a vacation...`,
                 `Hi ${this.$store.state.user.username}! +_+`
-            ]
+            ],
+
         }
     },
 

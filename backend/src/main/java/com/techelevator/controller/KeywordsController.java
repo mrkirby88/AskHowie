@@ -20,7 +20,7 @@ public class KeywordsController {
         this.keywordsDao = keywordsDao;
     }
 
-    @RequestMapping(path = "/api/keywords/keyword",  method = RequestMethod.GET)
+    @RequestMapping(path = "/api/keywords",  method = RequestMethod.GET)
     public List<String> getAllKeywords() {
         return keywordsDao.getAllKeywords();
     }

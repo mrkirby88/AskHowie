@@ -7,7 +7,10 @@ const http = axios.create({
 export default {
 
     getKeywords() {
-        return http.get("/");
-    }
+        return http.get("/keywords");
+    },
     
+    submitQuery(keyword) {
+        return http.get(`/responses/${keyword}`);
+    }
 }

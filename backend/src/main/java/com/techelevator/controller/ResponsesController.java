@@ -28,7 +28,7 @@ public class ResponsesController {
         return responsesDao.getResponse(userInput);
     }
 
-    @RequestMapping(path = "/api/responses/titles", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/titles", method = RequestMethod.GET)
     public List<String> getAllTitles() {
         return responsesDao.getAllTitles();
     }
