@@ -62,6 +62,7 @@ export default {
                 `Hello ${this.$store.state.user.username}! I'm a friend of Sarah Connor.`,
                 "Welcome, I'll take your clothes, your boots, and your motorcycle.",
                 "You're back.",
+                `Hello ${this.$store.state.user.username}! Are you hungry? I could go for a byte.`,
                 "Welcome! Stay awhile and listen.",
                 "Welcome, I hope you think I am a very nice Chatbot!",
                 "Hello! Come quietly, or there will be... Trouble!",
@@ -216,6 +217,11 @@ export default {
 #enter-button {
     width: auto;
     border-radius: 0px 6px 6px 0px;
+
+}
+#enter-button:hover {
+  background-color:rgb(54 54 114);
+  transform: translateY(0.5px);
 }
 #input-box {
     width: 760px;
