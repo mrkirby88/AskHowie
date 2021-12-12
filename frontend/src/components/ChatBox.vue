@@ -11,6 +11,9 @@
             <input id="chat-input" type="text" v-model="userInput" @keyup.enter="submit(userInput, false)">
             <button id="enter-button" @click.prevent="submit(userInput, false)">Chat</button>
         </div>
+    <div>
+        <pomodoro ref="pomo" />
+    </div>
     </div>
 </template>
 
@@ -19,11 +22,14 @@ import jokesApi from '@/services/JokesWebApi.js';
 import catFactApi from '@/services/CatFactWebApi.js';
 import bot from '@/components/BotHead.vue';
 import cbApi from '@/services/CBWebApi.js';
+import Pomodoro from './Pomodoro.vue';
+
 
 export default {
     name: "chatbox",
     components: {
-        bot
+        bot,
+        Pomodoro
     },
 
     created() {

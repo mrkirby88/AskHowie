@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     h1{
     align-items: center;
         text-decoration: underline;
