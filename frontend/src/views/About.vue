@@ -51,11 +51,12 @@ export default {
         text-decoration: underline;
         color: #ffffff;
         padding: 5px;
+        margin: 5px
     }
     h2{
         color: #ffffff;
         text-decoration: underline;
-        padding: 5px;
+        padding: 5px 20px;
     }
     h3{
         color: #f7f7f7;;
@@ -70,9 +71,11 @@ export default {
         height: 100%;
     }
     li, p{
-        margin: 2px;
         color: #dfdfdf;
+    }
+    li {
         font-style: italic;
+        margin: 0px 10px;
     }
     .image{
         width: 25%;
