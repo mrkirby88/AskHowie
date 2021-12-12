@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+<div class="article">
     <h1>Home</h1>
     <p>Welcome to ChatBot, {{user}}!</p>
 </div>

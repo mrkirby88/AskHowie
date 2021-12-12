@@ -1,7 +1,7 @@
 <template>
     <div class="main">
       <navigation />
-        <div class="articles">
+        <div class="article">
             <h1> About Chatbot!</h1>
                 <p>Welcome to Chatbot, the revolutionary way to fetch information from the internet! Who needs google when you have Chatbot at your disposal?
                     Chatbot is an interactive way that can assist you in elevating your skills by giving you information to ensure you will be at your best for landing 
@@ -45,9 +45,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     h1{
-    align-items: center;
+        align-items: center;
         text-decoration: underline;
         color: #ffffff;
         padding: 5px;
@@ -62,14 +62,7 @@ export default {
         padding: 5px;
         margin: 2px 5%;
     }
-    .articles{
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        background-color: #0b507a;
-        height: 100%;
-    }
-    li, p{
+    li, p {
         margin: 2px;
         color: #dfdfdf;
         font-style: italic;

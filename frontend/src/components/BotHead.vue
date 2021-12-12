@@ -65,6 +65,7 @@ export default {
     margin: auto;
 }
 #bot-face {
+    text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
     margin: 0 5px 0 5px;
     font-size: 90px;
