@@ -24,5 +24,12 @@ export default {
 <style>
     h1{
     align-items: center;
+        color: #ffffff;
+    }
+    h2{
+        color: #ffffff;
+    }
+    p{
+        color: #e6ecfd;
     }
 </style>

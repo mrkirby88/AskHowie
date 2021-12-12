@@ -7,6 +7,7 @@
             <router-link v-bind:to="{ name: 'home' }">Home</router-link>
             <router-link v-bind:to="{ name: 'chatbox' }">Chat</router-link>
             <router-link v-bind:to="{ name: 'about'}">About</router-link>
+            <router-link v-bind:to="{name: 'help'}">Help</router-link>
             <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
         </div>
     </div>

@@ -7,6 +7,7 @@
 <style>
 
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
 
   body {
     background-color: rgba(72, 87, 95, 0.959);
@@ -18,6 +19,10 @@
     margin: 5px 0px 5px 0px;
     border-radius: 6px;
     border: 0px;
+  }
+
+  input:focus {
+    outline: none;
   }
 
   #form-box {

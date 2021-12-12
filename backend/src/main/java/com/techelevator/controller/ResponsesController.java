@@ -28,7 +28,7 @@ public class ResponsesController {
         return responsesDao.getResponse(userInput);
     }
 
-    @RequestMapping(path = "/responses/titles", method = RequestMethod.GET)
+    @RequestMapping(path = "/titles", method = RequestMethod.GET)
     public List<String> getAllTitles() {
         return responsesDao.getAllTitles();
     }
@@ -39,23 +39,8 @@ public class ResponsesController {
     }
 
     @RequestMapping(path = "/search/{userInput}", method = RequestMethod.GET)
-    public List<Responses> searchByString(@PathVariable String userInput) {
-
-        List<Responses> responses = new ArrayList<>();
-
-        if (responsesDao.containsAKeyword(userInput)) {
-            List<String> match = responsesDao.scanStringForKeyword(userInput);
-
-            if (match.size() == 1) {
-                Responses response = new Responses();
-                String answer = responsesDao.getResponse(match.get(0));
-                response.setContainsKeyword(true);
-                response.setAnswer(answer);
-                responses.add(response);
-            }
-        }
-        return responses;
+    public List<String> searchByString(@PathVariable String userInput) {
+        return responsesDao.scanStringForKeyword(userInput);
     }
-
 
 }
