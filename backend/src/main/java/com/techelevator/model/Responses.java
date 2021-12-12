@@ -5,6 +5,7 @@ public class Responses {
     private long id;
     private String title;
     private String answer;
+    private boolean containsKeyword;
 
     public Responses(){}
 
@@ -12,6 +13,14 @@ public class Responses {
     this.id = id;
     this.title = title;
     this.answer = answer;
+    }
+
+    public boolean isContainsKeyword() {
+        return containsKeyword;
+    }
+
+    public void setContainsKeyword(boolean containsKeyword) {
+        this.containsKeyword = containsKeyword;
     }
 
     public long getId() {

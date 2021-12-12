@@ -8,6 +8,7 @@
             <router-link class="routes" v-bind:to="{ name: 'chatbox' }">Chat</router-link>
             <router-link class="routes" v-bind:to="{ name: 'about'}">About</router-link>
             <router-link class="routes" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+            <router-link class="routes" v-bind:to="{name: 'help'}">Help</router-link>
         </div>
     </div>
 </template>
