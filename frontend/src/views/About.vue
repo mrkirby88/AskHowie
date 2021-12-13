@@ -1,15 +1,39 @@
 <template>
-    <div>
+    <div class="main">
       <navigation />
-        <h1> About Chatbot!</h1>
-            <p>Welcome to Chatbot, the revolutionary way to fetch information from the internet! Who needs google when you have Chatbot at your disposal? …</p>
+        <div class="articles">
+            <h1> About Chatbot!</h1>
+                <p>Welcome to Chatbot, the revolutionary way to fetch information from the internet! Who needs google when you have Chatbot at your disposal?
+                    Chatbot is an interactive way that can assist you in elevating your skills by giving you information to ensure you will be at your best for landing 
+                    a job in your new career! Whether you need to brush up on loops, advice on making a resume that would even bring a tear to Ellen or Stephen's eye, or just a much needed joke to get you through the day; Chatbot has your back! 
+                </p>
 
-        <h2> Meet the Team Behind Chatbot:</h2> 
-            <p>Kenton Bandy</p>
-            <p>Christopher Nicoletti</p>
-            <p>Nathan O'Donnell</p>
-            <p>Roman Oliver</p>
-            <p>Matthew Kirby</p>
+            <h2> Meet the Team Behind Chatbot:</h2> 
+                <h3>Kenton Bandy</h3>
+                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>This will be altered but this is a little bit about me.</li>
+                <h3>Christopher Nicoletti</h3>
+                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>This will be altered but this is a little bit about me.</li>
+                <img class="image" src="../assets/images/NateODonnellPicture.png" />
+                <h3>Nathan O'Donnell</h3>
+                    <li>I enjoy gaming, collecting various hot sauces, and music trivia.</li>
+                    <li>"If you're not first, you're last." -Ricky Bobby</li>
+                <img class="image" src="../assets/images/RomanOliverPicture.jpeg"/>
+                <h3>Roman Oliver</h3>
+                    <li>My interests include Virtual Reality and 3D Printing.</li>
+                    <li>I also enjoy playing ice hockey and building models.</li>
+                    <li>"Society grows great when old men plant trees whose shade they know they shall never sit in." - Anonymous Greek Proverb</li>
+                <img class="image" src="../assets/images/MattKirbyPicture.jpg"/>    
+                <h3>Matthew Kirby</h3>
+                    <li>One of my favorite hobbies is I love to use my smoker for different meats! It is quite the tasty challenge!</li>
+                    <li>I graduated from West Virginia University and bleed gold and blue! Go Mountaineers!!.</li>
+                    <li>"Your life does not get better by chance, it gets better by change." - Jim Rohn.</li>
+        </div>
+        <body>
+        </body>
     </div>
 </template>
 
@@ -24,5 +48,38 @@ export default {
 <style>
     h1{
     align-items: center;
+        text-decoration: underline;
+        color: #ffffff;
+        padding: 5px;
     }
+    h2{
+        color: #ffffff;
+        text-decoration: underline;
+        padding: 5px;
+    }
+    h3{
+        color: #f7f7f7;;
+        padding: 5px;
+        margin: 2px 5%;
+    }
+    .articles{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        background-color: #0b507a;
+        height: 100%;
+    }
+    li, p{
+        margin: 2px;
+        color: #dfdfdf;
+        font-style: italic;
+    }
+    .image{
+        width: 25%;
+        margin: 5px;
+        border-radius: 20%;
+        padding: 10px;   
+    }
+
+
 </style>

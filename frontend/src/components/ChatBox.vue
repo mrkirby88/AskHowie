@@ -1,17 +1,15 @@
 <template>
     <div>
         <div id="display-box">
+            <div>
+                <bot ref="bot" />
+            </div>
             <div id="chat-content">
-                <div id="bot-ball">-</div>
-                <div id="bot-antenna">.</div>
-                <div id="bot-head">
-                    <h2 id="bot-face">{{face}}</h2>
-                </div>
             </div>        
         </div>
         <div id="input-box">
-            <input id="chat-input" type="text" v-model="userInput" @keyup.enter="buildText(userInput, false); parseInput()">
-            <button id="enter-button" @click.prevent="buildText(userInput, false); parseInput()">Chat</button>
+            <input id="chat-input" type="text" v-model="userInput" @keyup.enter="submit(userInput, false)">
+            <button id="enter-button" @click.prevent="submit(userInput, false)">Chat</button>
         </div>
     </div>
 </template>
@@ -19,9 +17,15 @@
 <script>
 import jokesApi from '@/services/JokesWebApi.js';
 import catFactApi from '@/services/CatFactWebApi.js';
+import bot from '@/components/BotHead.vue';
+import cbApi from '@/services/CBWebApi.js';
 
 export default {
     name: "chatbox",
+    components: {
+        bot
+    },
+
     created() {
         this.$nextTick(() => {
             let r = Math.floor(Math.random() * this.greetings.length);
@@ -32,11 +36,10 @@ export default {
             this.buildText(this.greetings[r], true);
         });
     },
+
     data () {
         return {
             userInput: "",
-            face: "+_+",
-
 
             /*
                 <img>:  {
@@ -47,7 +50,6 @@ export default {
 
             */
 
-
             greetings: [
                 `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
                 `Howdy hey ${this.$store.state.user.username}! You look like you need some knowledge! I mean, uh, you look really smart! Sorry, it's my first day +_+`,
@@ -55,38 +57,36 @@ export default {
                 "01001000 01100101 01101100 01101100 01101111 00100000 01101000 01110101 01101101 01100001 01101110 00101100 00100000 01101000 01101111 01110111 00100000 01100011 01100001 01101110 00100000 01001001 00100000 01101000 01100101 01101100 01110000 00100000 01111001 01101111 01110101 00111111 +_+",
                 `Yes, mom, I'll call you tomorrow. Mom, I have to go to work! loveyoubye. *sigh* Sorry about that ${this.$store.state.user.username}, how can I help? +_+`,
                 "Everyone asks the chat bot how to set a base case for recursive functions but no one asks chat bot how chat bot is doing +_+",
-                "Listen and understand... I do not feel pity, or remorse, or fear, and I absolutely will not stop... EVER... until you are de... learned!",
+                "Listen and understand... I do not feel pity, or remorse, or fear, and I absolutely will not stop, EVER, until you are ... learned!",
                 "Come with me if you want to learn.",
-                "Hello! I'm a friend of Sarah Connor.",
+                `Hello ${this.$store.state.user.username}! I'm a friend of Sarah Connor.`,
                 "Welcome, I'll take your clothes, your boots, and your motorcycle.",
                 "You're back.",
+                `Hello ${this.$store.state.user.username}! Are you hungry? I could go for a byte.`,
                 "Welcome! Stay awhile and listen.",
                 "Welcome, I hope you think I am a very nice Chatbot!",
                 "Hello! Come quietly, or there will be... Trouble!",
                 `Welcome to Chatbot! I hope you should find everything that you're looking for. If not, please let me know, ${this.$store.state.user.username}. My users will fix me. They fix everything.`,
                 "Bad code neutralized. Ladies and gentlemen, objective completed.",
-                "Hello! It looks to be a nice night for a walk!",
-                "Welcome... Please no disassemble...",
-                `Welcome ${this.$store.state.user.username}! Malfunction. Need input.`,
+                `Hello ${this.$store.state.user.username}! It looks to be a nice night for a walk!`,
+                `Welcome ${this.$store.state.user.username}! Malfunction. Need input. No disassemble!`,
                 `Welcome ${this.$store.state.user.username}! Nice computer! I'd buy that for a dollar!`,
                 `Hello ${this.$store.state.user.username}! I need a vacation...`,
                 `Hi ${this.$store.state.user.username}! +_+`
             ],
 
-            faces: [
-                "+o+",
-                "^_^",
-                "d^_^b",
-                "+_+",
-                "^o^"
-            ]
         }
     },
 
     methods: {
+
+        submit(text, isBot) {
+            if (!isBot && text === "") return;
+            this.buildText(text, isBot);
+            this.parseInput();
+        },
         
         buildText(text, isBot) {
-            if (!isBot && text === "") return;
             let box = document.getElementById('chat-content');
             let p = document.createElement('p');
             p.innerText = text;
@@ -94,7 +94,8 @@ export default {
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            }); 
+            });
+            if (isBot) this.$refs.bot.talk();
         },
 
         makeDiv(isBot) {
@@ -122,13 +123,14 @@ export default {
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            }); 
+            });
+            this.$refs.bot.talk();
         },
 
         styleElement(e, isBot) {
             let div = this.makeDiv(isBot);
             if (isBot) {
-                e.style.color = 'white';
+                e.style.color = '#100606';
             } else {
                 e.style.color = 'rgb(31, 33, 33)';
             }
@@ -160,12 +162,18 @@ export default {
             });
         },
 
+        queryServer(input) {
+            cbApi.submitQuery(input).then(r => {
+                this.buildText(r.data, true);
+            })
+        },
+
         parseInput() {
             let input = this.userInput.toLowerCase();
             if (input.includes("joke")) this.getJoke();
             else if (input.includes("cat")) this.getCatFact();
-            else if (input.includes("about")) this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
-            else {this.buildText("Sorry, I can't process that request +_+", true)}
+            else if (input.includes("about chatbot") || input.includes("about yourself")) this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!');
+            else {this.queryServer(input)}
             this.userInput = "";
         }
     }
@@ -175,11 +183,13 @@ export default {
 <style scoped>
 
 #display-box {
-    height: 400px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
     width: 700px;
     margin: auto;
     margin-top: 60px;
-    padding: 30px;
+    padding: 5px 30px 30px 30px;
     position: relative;
     background-color: rgb(25, 34, 58);
     color: rgb(214, 214, 214);
@@ -189,12 +199,11 @@ export default {
 #chat-content {
     display: flex;
     width: 100%;
-    max-height: 100%;
+    max-height: 450px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: auto;
     overflow: auto;
     overflow-wrap: break-word;
 }
@@ -208,6 +217,11 @@ export default {
 #enter-button {
     width: auto;
     border-radius: 0px 6px 6px 0px;
+
+}
+#enter-button:hover {
+  background-color:rgb(54 54 114);
+  transform: translateY(0.5px);
 }
 #input-box {
     width: 760px;
@@ -233,37 +247,6 @@ textarea:focus, input:focus {
     outline: none;
     background-color:rgb(25, 34, 58);
     color: rgb(214, 214, 214);
-}
-#bot-ball {
-    background-color: orange;
-    color: orange;
-    width: 25px;
-    line-height: 25px;
-    margin: 5px auto -2px auto;
-    border-radius: 50%;
-    float: none;
-}
-#bot-antenna {
-    background-color: gray;
-    color: gray;
-    line-height: 30px;
-    width: 10px;
-    margin: auto;
-}
-#bot-face {
-    margin: 0 5px 0 5px;
-    font-size: 100px;
-    padding: 0;
-    padding-bottom: 10px;
-    color: rgb(92, 255, 92);
-    line-height: 5rem;
-}
-#bot-head {
-    padding: 0 5px 15px 5px;
-    margin: auto;
-    margin-bottom: 20px;
-    background-color: gray;
-    border-radius: 30px;
 }
 
 </style>

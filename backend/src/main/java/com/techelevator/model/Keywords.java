@@ -5,12 +5,14 @@ public class Keywords {
     private long keywordID;
     private String keyword;
 
+
     public Keywords(){}
 
     public Keywords(long keywordID, String keyword){
         this.keywordID = keywordID;
         this.keyword = keyword;
     }
+
 
     public long getKeywordID() {
         return keywordID;
