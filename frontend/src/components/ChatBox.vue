@@ -28,27 +28,34 @@ export default {
 
     created() {
         this.$nextTick(() => {
-            let r = Math.floor(Math.random() * this.greetings.length);
-            if (this.randomFaces === true) {
-                let rFace = Math.floor(Math.random() * this.faces.length);
-                this.face = this.faces[rFace];                
-            }
-            this.buildText(this.greetings[r], true);
+            // let r = Math.floor(Math.random() * this.greetings.length);
+            // if (this.randomFaces === true) {
+            //     let rFace = Math.floor(Math.random() * this.faces.length);
+            //     this.face = this.faces[rFace];                
+            // }
+            // this.buildText(this.greetings[r], true);
+            this.processResponse(this.fakeResponse);
         });
     },
 
     data () {
         return {
             userInput: "",
-
-            /*
-                <img>:  {
-                        "type": "img"
-                        "src": ""
-                        "alt": ""
-                        }
-
-            */
+            fakeResponse: {
+                description: "Joins are a useful way to pull information from multiple tables.",
+                img_text: "A diagram of join patterns",
+                img_url: "https://i.stack.imgur.com/4zjxm.png",
+                links: [
+                    {
+                        text: "Java and C# Book",
+                        url: "https://v2-4-techelevator-book.netlify.app/content/sql-joins.html#joins"
+                    },
+                    {
+                        text: "Freecodecamp article",
+                        url: "https://www.freecodecamp.org/news/the-ultimate-guide-to-sql-join-statements/"
+                    }
+                ]
+            },
 
             greetings: [
                 `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
@@ -85,12 +92,59 @@ export default {
             this.buildText(text, isBot);
             this.parseInput();
         },
+
+        processResponse(response) {
+            let isBot = true;
+            let elements = [];
+            elements.push(this.styleElement(this.buildText(response.description, isBot)));
+            if (response.links !== null) {
+                for (let link in response.links) {
+                    elements.push(this.buildLink(link.text, link.url));
+                }                
+            }
+            if (response.img_url !== null) {
+                elements.push(this.buildImg(response.img_text, response.img_url));
+            }
+            let div = this.buildDiv(isBot);
+            div = this.insertElements(div, elements);
+            this.injectDivIntoChatbox(div, isBot);
+        },
         
         buildText(text, isBot) {
-            let box = document.getElementById('chat-content');
             let p = document.createElement('p');
             p.innerText = text;
-            let div = this.styleElement(p, isBot);
+            this.styleElement(p, isBot);
+            return p;            
+        },
+
+        buildLink(text, url) {
+            let a = document.createElement('a');
+            a.innerText = text;
+            a.href = url;
+            this.styleElement(a, true);
+            return a;
+        },
+
+        buildImg(text, url) {
+            let img = document.createElement('img');
+            img.setAttribute('src', url);
+            img.setAttribute('alt', text);
+            img.style.maxHeight = '100px';
+            return img;
+        },
+
+        insertElements(div, elements) {
+            if (!Array.isArray(elements)) div.insertAdjacentElement('beforeend', elements);
+            else {
+                for (let element in elements) {
+                div.insertAdjacentElement('beforeend', element);
+                }
+            }
+            return div;
+        },
+
+        injectDivIntoChatbox(div, isBot) {
+            let box = document.getElementById('chat-content');
             box.insertAdjacentElement('beforeend', div);
             this.$nextTick(() => {
                 document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
@@ -98,7 +152,7 @@ export default {
             if (isBot) this.$refs.bot.talk();
         },
 
-        makeDiv(isBot) {
+        buildDiv(isBot) {
             let div = document.createElement('div');
             if (isBot) {
                 div.style.backgroundColor = 'rgb(233, 109, 252)';
@@ -114,21 +168,7 @@ export default {
             return div;
         },
 
-        buildLink(href, innerText) {
-            let box = document.getElementById('chat-content');
-            let a = document.createElement('a');
-            a.innerText = innerText;
-            a.href = href;
-            let div = this.styleElement(a, true);
-            box.insertAdjacentElement('beforeend', div);
-            this.$nextTick(() => {
-                document.getElementById("chat-content").scrollTop = document.getElementById("chat-content").scrollHeight;
-            });
-            this.$refs.bot.talk();
-        },
-
         styleElement(e, isBot) {
-            let div = this.makeDiv(isBot);
             if (isBot) {
                 e.style.color = '#100606';
             } else {
@@ -136,8 +176,7 @@ export default {
             }
             e.style.textAlign = 'justify';
             e.style.margin = '0';
-            div.insertAdjacentElement('beforeend', e);
-            return div;
+            return e;
         },
 
         getJoke() {
