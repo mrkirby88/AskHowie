@@ -113,7 +113,8 @@ export default {
         buildText(text, isBot) {
             let p = document.createElement('p');
             p.innerText = text;
-            p.style.margin = "40px";
+            p.classList.add('chat-text');
+            p.style.marginBottom = '20px';
             this.styleElement(p, isBot);
             return p;            
         },
@@ -271,6 +272,10 @@ export default {
 
 p {
     width: 90%;
+    margin-bottom: 20px;
+}
+
+div.chat-text {
     margin-bottom: 20px;
 }
 
