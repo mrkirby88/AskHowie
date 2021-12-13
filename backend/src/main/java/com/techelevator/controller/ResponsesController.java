@@ -33,5 +33,4 @@ public class ResponsesController {
         return responsesDao.getAllTitles();
     }
 
-
 }
