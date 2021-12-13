@@ -117,6 +117,4 @@ VALUES ('java_array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO keywords (keyword, r_id)
 VALUES ('C#_array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array'));
-INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array') & (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
