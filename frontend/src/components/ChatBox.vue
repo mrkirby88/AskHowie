@@ -95,52 +95,52 @@ export default {
 
         processResponse(response) {
             let isBot = true;
-            let elements = [];
-            elements.push(this.styleElement(this.buildText(response.description, isBot)));
+            let div = this.buildDiv(isBot);
+            this.insertElement(div, this.buildText(response.description, isBot));
             if (response.links !== null) {
-                for (let link in response.links) {
-                    elements.push(this.buildLink(link.text, link.url));
-                }                
+                this.insertElement(div, this.buildText("Here are some useful links:", isBot))
+                for (let i=0; i<response.links.length; i++) {
+                    this.insertElement(div, this.buildLink(response.links[i].text, response.links[i].url));
+                }
             }
             if (response.img_url !== null) {
-                elements.push(this.buildImg(response.img_text, response.img_url));
+                this.insertElement(div, this.buildText("Here is a helpful image. Click to view full size:"))
+                this.insertElement(div, this.buildImg(response.img_text, response.img_url));
             }
-            let div = this.buildDiv(isBot);
-            div = this.insertElements(div, elements);
             this.injectDivIntoChatbox(div, isBot);
         },
         
         buildText(text, isBot) {
             let p = document.createElement('p');
             p.innerText = text;
+            p.style.margin = "40px";
             this.styleElement(p, isBot);
             return p;            
         },
 
         buildLink(text, url) {
             let a = document.createElement('a');
-            a.innerText = text;
             a.href = url;
+            a.innerText = text;
+            a.target = '_blank';
             this.styleElement(a, true);
             return a;
         },
 
         buildImg(text, url) {
             let img = document.createElement('img');
-            img.setAttribute('src', url);
-            img.setAttribute('alt', text);
-            img.style.maxHeight = '100px';
-            return img;
+            let a = document.createElement('a');
+            a.href = url;
+            a.target = "_blank";
+            img.src = url;
+            img.alt = text;
+            img.style.maxWidth = '300px';
+            this.insertElement(a, img);
+            return a;
         },
 
-        insertElements(div, elements) {
-            if (!Array.isArray(elements)) div.insertAdjacentElement('beforeend', elements);
-            else {
-                for (let element in elements) {
-                div.insertAdjacentElement('beforeend', element);
-                }
-            }
-            return div;
+        insertElement(div, element) {
+            div.insertAdjacentElement('beforeend', element);
         },
 
         injectDivIntoChatbox(div, isBot) {
@@ -271,6 +271,7 @@ export default {
 
 p {
     width: 90%;
+    margin-bottom: 20px;
 }
 
 textarea, input {
