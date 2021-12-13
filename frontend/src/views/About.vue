@@ -1,8 +1,8 @@
 <template>
     <div class="main">
       <navigation />
-        <div class="articles">
-            <h1> About Chatbot!</h1>
+        <div class="article">
+            <h1> About Chatbot</h1>
                 <p>Welcome to Chatbot, the revolutionary way to fetch information from the internet! Who needs google when you have Chatbot at your disposal?
                     Chatbot is an interactive way that can assist you in elevating your skills by giving you information to ensure you will be at your best for landing 
                     a job in your new career! Whether you need to brush up on loops, advice on making a resume that would even bring a tear to Ellen or Stephen's eye, or just a much needed joke to get you through the day; Chatbot has your back! 
@@ -47,42 +47,42 @@ export default {
 
 <style scoped>
     h1{
-    align-items: center;
+        align-items: center;
         text-decoration: underline;
         color: #ffffff;
         padding: 5px;
-        margin: 5px
+        font-size: 80px;
+              
     }
     h2{
         color: #ffffff;
         text-decoration: underline;
-        padding: 5px 20px;
+        padding: 5px;
+        font-size: 40px;
+        margin-top: 80px;
     }
     h3{
         color: #f7f7f7;;
         padding: 5px;
-        margin: 2px 5%;
+        margin: 5px 40px;
     }
-    .articles{
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        background-color: #0b507a;
-        height: 100%;
-    }
-    li, p{
+    li, p {
+        margin: 2px;
         color: #dfdfdf;
     }
     li {
-        font-style: italic;
-        margin: 0px 10px;
+          font-style: italic;
     }
     .image{
         width: 25%;
         margin: 5px;
+        margin-top: 50px;
         border-radius: 20%;
         padding: 10px;   
     }
+    .main{
+        background-color: rgb(26, 28, 30);
+    }
 
-
+    
 </style>

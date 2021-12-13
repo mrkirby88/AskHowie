@@ -48,4 +48,18 @@
   justify-content: space-between;
   margin: auto;
   }
+
+  .article{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #0b507a;
+    color: #dfdfdf;
+    min-height: 100vw;
+    width: 800px;
+    margin: auto;
+    padding: 326px;
+    padding-top: 10px;
+  }
+
 </style>
