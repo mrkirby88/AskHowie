@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Link;
 import com.techelevator.model.Responses;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,9 @@ public interface ResponsesDao {
     List<Responses> getAllResponses();
     List<String> getAllTitles();
     List<String> getAllKeywords();
-    List<String> scanStringForKeyword(String userInput);
+    Responses scanStringForKeyword(String userInput);
     boolean containsAKeyword (String userInput);
+    Responses getASingleResponse(String userInput);
+    List<Link> getASingleLink(String userInput);
 
 }

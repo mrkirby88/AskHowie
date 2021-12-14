@@ -2,22 +2,31 @@ package com.techelevator.model;
 
 public class Link {
 
-    private String text;
+    private String name;
+    private String txt;
     private String url;
 
     public Link (){}
 
-    public Link(String text, String url) {
-        this.text = text;
+    public Link(String txt, String url) {
+        this.txt = txt;
         this.url = url;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTxt() {
+        return txt;
+    }
+
+    public void setTxt(String txt) {
+        this.txt = txt;
     }
 
     public String getUrl() {

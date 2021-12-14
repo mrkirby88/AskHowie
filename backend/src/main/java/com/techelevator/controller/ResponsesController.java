@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ResponsesDao;
+import com.techelevator.model.Link;
 import com.techelevator.model.Responses;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,13 @@ public class ResponsesController {
     }
 
     @RequestMapping(path = "/search/{userInput}", method = RequestMethod.GET)
-    public List<String> searchByString(@PathVariable String userInput) {
+    public Responses searchByString(@PathVariable String userInput) {
         return responsesDao.scanStringForKeyword(userInput);
+    }
+
+    @RequestMapping(path = "answer/{userInput}", method = RequestMethod.GET)
+    public Responses getASingleResponse(@PathVariable  String userInput){
+        return responsesDao.getASingleResponse(userInput);
     }
 
 }
