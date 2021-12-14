@@ -101,6 +101,7 @@ export default {
   border-style: groove;
   border-color: black;
   background-color: black;
+  color: white;
   
 }
 .message{
@@ -109,6 +110,7 @@ export default {
 border-style: groove;
 border-color: black;
 background-color: black;
+color: white;
 }
 #buttons {
 display: flex; 

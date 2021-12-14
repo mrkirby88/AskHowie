@@ -20,6 +20,7 @@
 <script>
 import jokesApi from '@/services/JokesWebApi.js';
 import catFactApi from '@/services/CatFactWebApi.js';
+import motivationalApi from '@/services/MotivationalWebApi.js';
 import bot from '@/components/BotHead.vue';
 import cbApi from '@/services/CBWebApi.js';
 import Pomodoro from './Pomodoro.vue';
@@ -209,6 +210,21 @@ export default {
                 this.deployElement(this.buildText(r.data.fact), true);
             });
         },
+        
+        getMotivation() {
+            let motivation = "";
+            motivationalApi.getMotivation().then(r => {
+                if (r.data.author === 'null') {
+                   r.data.author = 'unknown';
+                } else {
+                    motivation += r.data.text;
+                    motivation += "\n";
+                    motivation += r.data.author;
+                }
+
+                this.deployElement(this.buildText(motivation), true);
+            });
+        },
 
         queryServer(input) {
             cbApi.submitQuery(input).then(r => {
@@ -220,6 +236,7 @@ export default {
             let input = this.userInput.toLowerCase();
             if (input.includes("joke")) this.getJoke();
             else if (input.includes("cat")) this.getCatFact();
+            else if (input.includes("motivation")) this.getMotivation();
             else if (input.includes("about chatbot") || input.includes("about yourself")) {
                 this.deployElement(this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!'), true);
             } else {this.queryServer(input)}
