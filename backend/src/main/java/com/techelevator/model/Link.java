@@ -33,7 +33,7 @@ public class Link {
         return url;
     }
 
-    public void setUrl(String link) {
+    public void setUrl(String url) {
         this.url = url;
     }
 }

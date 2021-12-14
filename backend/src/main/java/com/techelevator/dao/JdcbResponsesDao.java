@@ -103,12 +103,12 @@ public class JdcbResponsesDao implements ResponsesDao{
     @Override
     public Responses getASingleResponse(String userInput){
         Responses singleResponse = new Responses();
-        String sql = "SELECT description, img_text, img_url FROM responses JOIN keywords ON keywords.r_id = responses.r_id WHERE keyword ilike ?;";
+        String sql = "SELECT description, img_text, img_url FROM responses JOIN keywords ON keywords.r_id = responses.r_id WHERE title ilike ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
-        if (!rowSet.next()){
-            sql = "SELECT description, img_text, img_url FROM responses JOIN keywords ON keywords.r_id = responses.r_id WHERE title ilike ?;";
-            rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
-        }
+//        if (rowSet.next()){
+//            sql = "SELECT description, img_text, img_url FROM responses JOIN keywords ON keywords.r_id = responses.r_id WHERE title ilike ?;";
+//            rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
+//        }
         if(rowSet.next()) {
             singleResponse.setDescription(rowSet.getString("description"));
             singleResponse.setImg_text(rowSet.getString("img_text"));
@@ -127,14 +127,14 @@ public class JdcbResponsesDao implements ResponsesDao{
         Link link = new Link();
         String sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id JOIN keywords ON keywords.r_id = responses.r_id WHERE keyword ilike ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
-        if (!rowSet.next()){
-            sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id WHERE title ilike ?;";
-            rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
-        }
-        if (!rowSet.next()){
-            links.add(null);
-        }
-        while (rowSet.next()) {
+//        if (!rowSet.next()){
+//            sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id WHERE title ilike ?;";
+//            rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
+//        }
+//        if (!rowSet.next()){
+//            links.add(null);
+//        }
+        if (rowSet.next()) {
             link.setTxt(rowSet.getString("txt"));
             link.setUrl(rowSet.getString("url"));
             links.add(link);
