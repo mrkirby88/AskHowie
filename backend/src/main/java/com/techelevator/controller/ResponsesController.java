@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ResponsesDao;
+import com.techelevator.model.Link;
 import com.techelevator.model.Responses;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,20 @@ public class ResponsesController {
     public ResponsesController(ResponsesDao responsesDao) {
         this.responsesDao = responsesDao;
     }
+
+
+    /*
+    Endpoints:
+        1. get all keywords and titles
+        2. send user input for match(es) - list matches if any and:
+            no matches: return response with message in description
+            one match: return good response
+            >1 match: return response with matches array populated
+        3. get keywords
+        4. get titles
+     */
+
+
 
     @RequestMapping(path = "/responses", method = RequestMethod.GET)
     public List<Responses> getAllResponses() {
@@ -39,8 +54,13 @@ public class ResponsesController {
     }
 
     @RequestMapping(path = "/search/{userInput}", method = RequestMethod.GET)
-    public List<String> searchByString(@PathVariable String userInput) {
+    public Responses searchByString(@PathVariable String userInput) {
         return responsesDao.scanStringForKeyword(userInput);
+    }
+
+    @RequestMapping(path = "answer/{userInput}", method = RequestMethod.GET)
+    public Responses getASingleResponse(@PathVariable  String userInput){
+        return responsesDao.getASingleResponse(userInput);
     }
 
 }
