@@ -11,7 +11,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
   body {
-            background-color: rgb(26, 28, 30);
+    background-color: rgb(26, 28, 30);
     font-family: 'Inter', sans-serif;
   }
 
@@ -53,14 +53,18 @@
   .article{
     display: flex;
     flex-direction: column;
-    align-items: left;
+    /* align-items: left; */
     background-color: #0b507a;
     color: #dfdfdf;
-    min-height: 100vw;
-    width: 800px;
-    margin: auto;
+    /* min-height: 100vw; */   /*Check With Kenton on This One with how it affects Home vs About */
+    /* width: 800px; */
+    /* margin: auto; */
     padding: 326px;
     padding-top: 10px;
+  }
+  #nav, .article{
+    margin: 0 11.6%
+    
   }
 
 

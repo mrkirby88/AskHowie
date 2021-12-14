@@ -30,22 +30,23 @@ export default {
         background-color: rgba(251,251,251,255);
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         align-items: center;
+        
     }
 
     img {
         max-height: 120px;
         align-self: center;
-        
     }
 
     #links {
         display: flex;
-        width: 25%;
+        width: 35%;
         flex-direction: row;
-        justify-content: space-around;
-        margin-right: 100px;
+        justify-content: space-evenly;
+        flex-grow: .6;
+        /* margin-right: 100px; */
         font-size: 1.3rem;
     }
     .routes:hover{
