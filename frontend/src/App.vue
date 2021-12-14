@@ -10,7 +10,7 @@
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
 
   body {
-    background-color: rgba(72, 87, 95, 0.959);
+            background-color: rgb(26, 28, 30);
     font-family: 'Inter', sans-serif;
   }
 
