@@ -19,6 +19,20 @@ public class ResponsesController {
         this.responsesDao = responsesDao;
     }
 
+
+    /*
+    Endpoints:
+        1. get all keywords and titles
+        2. send user input for match(es) - list matches if any and:
+            no matches: return response with message in description
+            one match: return good response
+            >1 match: return response with matches array populated
+        3. get keywords
+        4. get titles
+     */
+
+
+
     @RequestMapping(path = "/responses", method = RequestMethod.GET)
     public List<Responses> getAllResponses() {
         return responsesDao.getAllResponses();

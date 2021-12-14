@@ -16,6 +16,6 @@ public interface ResponsesDao {
     Responses scanStringForKeyword(String userInput);
     boolean containsAKeyword (String userInput);
     Responses getASingleResponse(String userInput);
-    List<Link> getASingleLink(String userInput);
+    List<Link> getLinks(String userInput);
 
 }

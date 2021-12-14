@@ -99,8 +99,8 @@ export default {
         },
 
         processResponse(response) {
-            let len = response.matches.length;
-            if (len > 0) {
+            if (response.matches) {
+                let len = response.matches.length;
                 let div = this.buildDiv(true);
                 this.insertElement(div, this.buildText("Your query has matched multiple results! Please choose one topic:"));
                 for (let i=0; i<len; i++) {
@@ -123,7 +123,7 @@ export default {
             if (response.links !== null) {
                 this.insertElement(div, this.buildText("Here are some useful links:"))
                 for (let i=0; i<response.links.length; i++) {
-                    this.insertElement(div, this.buildLink(response.links[i].text, response.links[i].url));
+                    this.insertElement(div, this.buildLink(response.links[i].txt, response.links[i].url));
                 }
             }
             if (response.img_url !== null) {
@@ -206,7 +206,7 @@ export default {
 
         queryServer(input) {
             cbApi.submitQuery(input).then(r => {
-                this.submitQuery(r.data);
+                this.processResponse(r.data);
             });
         },
 
@@ -216,9 +216,7 @@ export default {
             else if (input.includes("cat")) this.getCatFact();
             else if (input.includes("about chatbot") || input.includes("about yourself")) {
                 this.deployElement(this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!'), true);
-            } else if (input.includes("join") && input.includes("loop")) this.processResponse(this.fakeResponse2);
-            else if (input.includes("join")) this.processResponse(this.fakeResponse);
-            else {this.queryServer(input)}
+            } else {this.queryServer(input)}
             this.userInput = "";
         }
     }

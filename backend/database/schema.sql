@@ -44,11 +44,12 @@ CREATE TABLE "links" (
 );
 
 CREATE TABLE "responses_links" (
-        r_id INT NOT NULL PRIMARY KEY,
+        r_id INT NOT NULL,
         l_id INT NOT NULL,
         CONSTRAINT l_id FOREIGN KEY (l_id) REFERENCES links (l_id),
-        CONSTRAINT r_id FOREIGN KEY (r_id) REFERENCES responses (r_id) 
-);
+        CONSTRAINT r_id FOREIGN KEY (r_id) REFERENCES responses (r_id),
+        PRIMARY KEY (r_id, l_id)
+        );
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
@@ -117,4 +118,35 @@ VALUES ('java_array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO keywords (keyword, r_id)
 VALUES ('C#_array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array') & (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
+
+
+
+
+-- ********************************************************************************
+-- This script creates the database users and grants them the necessary permissions
+-- ********************************************************************************
+
+CREATE USER final_capstone_owner
+WITH PASSWORD 'finalcapstone';
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+CREATE USER final_capstone_appuser
+WITH PASSWORD 'finalcapstone';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
