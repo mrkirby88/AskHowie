@@ -8,6 +8,7 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
   body {
     background-color: rgba(72, 87, 95, 0.959);
@@ -48,4 +49,17 @@
   justify-content: space-between;
   margin: auto;
   }
+
+  .article{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #0b507a;
+    color: #dfdfdf;
+    min-height: 100vw;
+    width: 800px;
+    margin: auto;
+    padding: 40px;
+  }
+
 </style>

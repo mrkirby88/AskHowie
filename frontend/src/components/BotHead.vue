@@ -37,6 +37,7 @@ export default {
             if (this.count === 0) {
                 clearInterval(this.intId);
                 this.intId = null;
+                this.face = this.mainFace;
             }
             else {
                 this.face = this.face === this.mainFace ? this.altFace : this.mainFace;
@@ -65,6 +66,7 @@ export default {
     margin: auto;
 }
 #bot-face {
+    text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
     margin: 0 5px 0 5px;
     font-size: 90px;
