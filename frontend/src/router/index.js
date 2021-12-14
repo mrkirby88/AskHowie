@@ -8,6 +8,7 @@ import store from '../store/index';
 import About from '../views/About.vue';
 import ChatBox from '@/views/ChatBox.vue';
 import Help from '@/views/Help.vue';
+import Logos from '@/views/Logos.vue';
 
 Vue.use(Router);
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/help",
       name: "help",
       component: Help,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/logos",
+      name: "logos",
+      component: Logos,
       meta: {
         requiresAuth: true
       }

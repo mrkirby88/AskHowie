@@ -8,6 +8,7 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
   body {
             background-color: rgb(26, 28, 30);
