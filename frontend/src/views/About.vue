@@ -9,9 +9,10 @@
                 </p>
 
             <h2> Meet the Team Behind Chatbot:</h2> 
+                <img class="image" src="../assets/images/KentonBandyPicture.jpg" />
                 <h3>Kenton Bandy</h3>
-                    <li>This will be altered but this is a little bit about me.</li>
-                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>I am a Master Jedi of Code. That is all you need to know.</li>
+                    <li>I taught Yoda how to use recursion.</li>
                     <li>This will be altered but this is a little bit about me.</li>
                 <h3>Christopher Nicoletti</h3>
                     <li>This will be altered but this is a little bit about me.</li>

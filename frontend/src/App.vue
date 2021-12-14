@@ -63,9 +63,27 @@
     padding-top: 10px;
   }
   #nav, .article{
-    margin: 0 11.6%
-    
+    margin: 0 11.6%;
   }
+  #nav {
+    background-color: rgba(251,251,251,255);
+    display: flex;
+    flex-direction: row;
+        /* justify-content: space-between; */
+    align-items: center;
+    }
+  #links {
+    display: flex;
+    width: 35%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: .6;
+        /* margin-right: 100px; */
+    font-size: 1.3rem;
+    }
+
+
+
 
 
 </style>

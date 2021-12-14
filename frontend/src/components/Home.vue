@@ -1,7 +1,7 @@
 <template>
 <div class="article">
-    <h1>Home</h1>
-    <p>Welcome to ChatBot, {{user}}!</p>
+    <h1 class="homeTextColor">Home</h1>
+    <p class="homeTextColor">Welcome to ChatBot, {{user}}!</p>
 </div>
 </template>
 
@@ -17,10 +17,11 @@
 </script>
 
 <style scoped>
-h1{
+/* h1{
     color:#dcdceb;
-}
-p{
+} */
+.homeTextColor{
     color: #dcdceb;
 }
+
 </style>

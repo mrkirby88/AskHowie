@@ -26,31 +26,15 @@ export default {
 
 <style scoped>
 
-    #nav {
-        background-color: rgba(251,251,251,255);
-        display: flex;
-        flex-direction: row;
-        /* justify-content: space-between; */
-        align-items: center;
-        
+     img {
+    max-height: 120px;
+    /* align-self: center; */
     }
 
-    img {
-        max-height: 120px;
-        align-self: center;
-    }
-
-    #links {
-        display: flex;
-        width: 35%;
-        flex-direction: row;
-        justify-content: space-evenly;
-        flex-grow: .6;
-        /* margin-right: 100px; */
-        font-size: 1.3rem;
-    }
     .routes:hover{
-        color: rgb(158, 76, 158);
+        color: #166ca1;
     }
-
+    .routes{
+        color: #0b507a;
+    }
 </style>
