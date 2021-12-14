@@ -49,9 +49,19 @@ export default {
                         text: "Freecodecamp article",
                         url: "https://www.freecodecamp.org/news/the-ultimate-guide-to-sql-join-statements/"
                     }
+                ],
+                matches: []
+            },
+            fakeResponse2: {
+                description: null,
+                img_text: null,
+                img_url: null,
+                links: [],
+                matches: [
+                    "joins",
+                    "loops"
                 ]
             },
-
             greetings: [
                 `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
                 `Howdy hey ${this.$store.state.user.username}! You look like you need some knowledge! I mean, uh, you look really smart! Sorry, it's my first day +_+`,
@@ -177,8 +187,8 @@ export default {
 
         queryServer(input) {
             cbApi.submitQuery(input).then(r => {
-                this.buildText(r.data);
-            })
+                this.submitQuery(r.data);
+            });
         },
 
         parseInput() {
@@ -283,6 +293,7 @@ export default {
 #chat-content img {
     margin-bottom: 10px;
     max-width: 60%;
+    border-radius: 10px;
 }
 
 textarea, input {
