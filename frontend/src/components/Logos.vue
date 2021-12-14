@@ -79,8 +79,8 @@ export default {
 
 <style>
 #bot-ball {
-    background-color: orange;
-    color: orange;
+    background-color: orangered;
+    color: orangered;
     width: 25px;
     line-height: 25px;
     margin: 10px auto -2px auto;
@@ -116,6 +116,7 @@ export default {
     width: 400px;
     align-items: flex-end;
     background-color: rgb(20, 14, 34);
+    background-color: white;
     width: auto;
     padding: 50px;
 }
@@ -130,6 +131,7 @@ export default {
     margin: 0;
     line-height: 150px;
     color: rgb(0, 238, 255);
+    color: rgb(0, 149, 248);
 }
 .logo-text-2 {
     margin-left: 10px;

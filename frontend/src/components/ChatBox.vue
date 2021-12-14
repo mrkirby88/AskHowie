@@ -120,8 +120,8 @@ export default {
             let isBot = true;
             let div = this.buildDiv(isBot);
             this.insertElement(div, this.buildText(response.description));
-            if (response.links !== null) {
-                this.insertElement(div, this.buildText("Here are some useful links:"))
+            if (response.links != null && response.links.length > 0) {
+                this.insertElement(div, this.buildText(response.links.length > 1 ? "Here are some useful links:" : "This link may be of use:"))
                 for (let i=0; i<response.links.length; i++) {
                     this.insertElement(div, this.buildLink(response.links[i].txt, response.links[i].url));
                 }
@@ -314,7 +314,7 @@ export default {
 }
 
 .chat-link:hover {
-    color: white;
+    color: orangered;
 }
 
 .chat-text, .chat-link {
