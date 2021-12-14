@@ -23,7 +23,7 @@ public class JdcbResponsesDao implements ResponsesDao{
 
     @Override
     public String getResponse(String userInput) {
-        String sql = "select title from responses join keywords on responses.r_id = keywords.r_id where keyword ilike ?";
+        String sql = "select keyword from responses join keywords on responses.r_id = keywords.r_id where title ilike ?";
         return jdbcTemplate.queryForObject(sql, String.class, userInput);
     }
 
@@ -125,16 +125,13 @@ public class JdcbResponsesDao implements ResponsesDao{
     public List<Link> getASingleLink(String userInput){
         List<Link> links = new ArrayList<>();
         Link link = new Link();
-        String sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id JOIN keywords ON keywords.r_id = responses.r_id WHERE keyword ilike ?;";
+        String sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id JOIN keywords ON keywords.r_id = responses.r_id WHERE title ilike ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
 //        if (!rowSet.next()){
 //            sql = "SELECT txt, url FROM links JOIN responses_links ON responses_links.l_id = links.l_id JOIN responses ON responses.r_id = responses_links.r_id WHERE title ilike ?;";
 //            rowSet = jdbcTemplate.queryForRowSet(sql, userInput);
 //        }
-//        if (!rowSet.next()){
-//            links.add(null);
-//        }
-        if (rowSet.next()) {
+        while (rowSet.next()) {
             link.setTxt(rowSet.getString("txt"));
             link.setUrl(rowSet.getString("url"));
             links.add(link);
