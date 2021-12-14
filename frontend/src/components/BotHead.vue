@@ -37,6 +37,7 @@ export default {
             if (this.count === 0) {
                 clearInterval(this.intId);
                 this.intId = null;
+                this.face = this.mainFace;
             }
             else {
                 this.face = this.face === this.mainFace ? this.altFace : this.mainFace;

@@ -99,6 +99,24 @@ export default {
         },
 
         processResponse(response) {
+            let len = response.matches.length;
+            if (len > 0) {
+                let div = this.buildDiv(true);
+                this.insertElement(div, this.buildText("Your query has matched multiple results! Please choose one topic:"));
+                for (let i=0; i<len; i++) {
+                    let match = response.matches[i];
+                    let e = this.buildLink(match, "#");
+                    e.target = "";
+                    e.addEventListener('click', () => {
+                        this.userInput = match;
+                        this.parseInput();
+                        });
+                    this.insertElement(div, e);
+                }
+                this.injectDivIntoChatbox(div, true);
+                this.userInput = "";
+                return;
+            }
             let isBot = true;
             let div = this.buildDiv(isBot);
             this.insertElement(div, this.buildText(response.description));
@@ -119,6 +137,7 @@ export default {
             let div = this.buildDiv(isBot);
             this.insertElement(div, e);
             this.injectDivIntoChatbox(div);
+            if (isBot) this.$refs.bot.talk();
         },
         
         buildText(text) {
@@ -197,7 +216,8 @@ export default {
             else if (input.includes("cat")) this.getCatFact();
             else if (input.includes("about chatbot") || input.includes("about yourself")) {
                 this.deployElement(this.buildLink('http://localhost:8081/about', 'Learn more about Chatbot!'), true);
-            } else if (input.includes("join")) this.processResponse(this.fakeResponse);
+            } else if (input.includes("join") && input.includes("loop")) this.processResponse(this.fakeResponse2);
+            else if (input.includes("join")) this.processResponse(this.fakeResponse);
             else {this.queryServer(input)}
             this.userInput = "";
         }
@@ -217,8 +237,9 @@ export default {
     padding: 5px 30px 30px 30px;
     position: relative;
     background-color: rgb(25, 34, 58);
-    border: 1px solid white;
-    border-radius: 10px;
+    border: 2px solid white;
+    border-bottom-width: 0;
+    border-radius: 10px 10px 0 0;
 }
 
 #chat-content {
@@ -232,17 +253,27 @@ export default {
     overflow: auto;
     overflow-wrap: break-word;
 }
-
+::-webkit-scrollbar {
+    border-radius: 20px;
+    background-color: rgb(19, 26, 44);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: gray;
+}
 #chat-input {
-    margin: auto;
+    margin: 0;
     padding: 0px 30px;
     width: 100%;
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0 0 0 10px;
 }
 #enter-button {
-    width: auto;
-    border-radius: 0px 6px 6px 0px;
-
+    width: 100px;
+    margin: 0;
+    border-radius: 0 0 10px 0;
+}
+#chat-input, #enter-button, #input-box {
+    height: 40px;
 }
 #enter-button:hover {
   background-color:rgb(54 54 114);
@@ -254,10 +285,13 @@ export default {
     display: flex;
     flex-direction: row;
     margin: auto;
+    border: 2px solid white;
+    border-top-width: 1px;
+    border-radius: 0 0 10px 10px;
 }
 
 .bot-div {
-    background-color: rgb(255, 132, 255);
+    background-color: rgb(201, 201, 201);
     align-self: flex-start;
 }
 
@@ -292,6 +326,7 @@ export default {
 
 #chat-content img {
     margin-bottom: 10px;
+    margin-top: 10px;
     max-width: 60%;
     border-radius: 10px;
 }
