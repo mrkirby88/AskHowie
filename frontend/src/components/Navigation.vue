@@ -28,7 +28,6 @@ export default {
 
      img {
     max-height: 120px;
-    /* align-self: center; */
     }
 
     .routes:hover{

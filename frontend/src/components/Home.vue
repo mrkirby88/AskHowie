@@ -17,9 +17,7 @@
 </script>
 
 <style scoped>
-/* h1{
-    color:#dcdceb;
-} */
+
 .homeTextColor{
     color: #dcdceb;
 }

@@ -53,12 +53,8 @@
   .article{
     display: flex;
     flex-direction: column;
-    /* align-items: left; */
     background-color: #0b507a;
     color: #dfdfdf;
-    /* min-height: 100vw; */   /*Check With Kenton on This One with how it affects Home vs About */
-    /* width: 800px; */
-    /* margin: auto; */
     padding: 326px;
     padding-top: 10px;
   }
@@ -69,7 +65,6 @@
     background-color: rgba(251,251,251,255);
     display: flex;
     flex-direction: row;
-        /* justify-content: space-between; */
     align-items: center;
     }
   #links {
@@ -78,12 +73,8 @@
     flex-direction: row;
     justify-content: space-evenly;
     flex-grow: .6;
-        /* margin-right: 100px; */
     font-size: 1.3rem;
     }
-
-
-
-
+    
 
 </style>
