@@ -316,22 +316,23 @@ export default {
 #display-box {
   display: flex;
   flex-direction: column;
-  height: 800px;
-  width: 800px;
-  margin: auto;
-  margin-top: 60px;
-  padding: 5px 30px 30px 30px;
+  height: 75vh;
+  width: 76%;
+  align-self: center;  
   position: relative;
   background-color: rgb(25, 34, 58);
   border: 2px solid white;
   border-bottom-width: 0;
-  border-radius: 10px 10px 0 0;
+}
+
+#display-box, #input-box {
+  width: 76%;
 }
 
 #chat-content {
   display: flex;
   width: 100%;
-  max-height: 650px;
+  max-height: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -376,10 +377,9 @@ export default {
 }
 
 #input-box {
-  width: 860px;
   display: flex;
   flex-direction: row;
-  margin: auto;
+  align-self: center;
   border: 2px solid white;
   border-top-width: 1px;
   border-radius: 0 0 10px 10px;
@@ -424,7 +424,8 @@ export default {
 #chat-content img {
   margin-bottom: 10px;
   margin-top: 10px;
-  max-width: 60%;
+  max-width: 300px;
+  max-width: 50%;
   border-radius: 20px;
 }
 

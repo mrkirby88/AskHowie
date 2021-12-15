@@ -1,5 +1,5 @@
 <template>
-  <div class="article-container">
+  <div>
       <h1>Docs</h1>
       <h2>What can I ask Howie?</h2>
       <p>AskHowie was designed to provide resources to coding students and professionals, with an emphasis on <a href="https://www.techelevator.com/" target="_blank">Tech Elevator</a> students and alumni. The following is a list of keywords that Howie will recognize and respond to:</p>

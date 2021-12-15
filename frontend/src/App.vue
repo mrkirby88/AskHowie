@@ -55,22 +55,25 @@
     flex-direction: column;
     align-self: center;
     color: #dfdfdf;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    width: 900px;
+    padding: 10px 0 50px;
+    width: 700px;
+    min-height: 75vh;
   }
   .article-container, .article {
     background-color:#0b507a
   }
-  #nav, .article-container{
-    margin: 0 12%;
+  #nav, .article-container {
+    margin: 0;
+    width: 76%;
+    align-self: center;
+    padding: 2px;
   }
   #nav {
-    background-color: rgba(251,251,251,255);
+    background-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 5px;
+    border-radius: 10px 10px 0 0;
     }
   #links {
     display: flex;
