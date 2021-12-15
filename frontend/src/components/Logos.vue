@@ -8,11 +8,11 @@
                     <h2 id="bot-face">{{face}}</h2>
                 </div>
             </div>
-            <h1 class="logo-text">ChatBot</h1>
+            <h1 class="logo-text">AskHowie</h1>
         </div>
         <div class="spacer"></div>
         <div class="logo">
-            <h1 class="logo-text-2">ChatB</h1>
+            <h1 class="logo-text-2">AskH</h1>
             <div>
                 <div id="bot-ball">-</div>
                 <div id="bot-antenna">.</div>
@@ -20,7 +20,7 @@
                     <h2 id="bot-face">{{face}}</h2>
                 </div>
             </div>
-            <h1 class="logo-text-2">t</h1>
+            <h1 class="logo-text-2">wie</h1>
         </div>
         <div class="spacer"></div>
         <div class="logo-3">
@@ -31,7 +31,7 @@
                     <h2 id="bot-face">{{face}}</h2>
                 </div>
             </div>
-            <h1 class="logo-text-3">ChatBot</h1>
+            <h1 class="logo-text-3">AskHowie</h1>
         </div>      
     </div>
 
