@@ -313,7 +313,7 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'jobs'), (SELECT l_id FROM links WHERE name ILIKE 'jobs'));
 
 INSERT INTO responses (title, description, img_text, img_url)
-VALUES ('snek', 'Snek!', 'snekky boi', '<iframe src="https://imgur.com/CjIY62N" width="640" height="480" allow="autoplay"></iframe>');
+VALUES ('snek', 'Snek!', 'snekky boi', 'https://imgur.com/CjIY62N');
 INSERT INTO links (name, txt, url)
 VALUES ('snek', 'Picture of Snek', 'https://imgur.com/CjIY62N');
 INSERT INTO keywords (keyword, r_id)
