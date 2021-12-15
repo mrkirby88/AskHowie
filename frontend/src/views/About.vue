@@ -12,9 +12,9 @@
             <h2 class="title"> Meet the Team Behind Chatbot:</h2> 
                 <img class="image" src="../assets/images/KentonBandyPicture.jpg" />
                 <h3 class="names">Kenton Bandy</h3>
-                    <li>I am a Master Jedi of Code. That is all you need to know.</li>
-                    <li>I taught Yoda how to use recursion.</li>
-                    <li>This will be altered but this is a little bit about me.</li>
+                    <li>My hobbies include biking, writing electronic music, gaming, and sneaking cheeky recursive functions in my Tech Elevator homework to see if anyone's paying attention.</li>
+                    <li>My background is in classical trumpet performance.</li>
+                    <li>Word across cable / swim like fish to bearded friend / but is he listen? -Brian</li>
                 <h3 class="names">Christopher Nicoletti</h3>
                     <li>This will be altered but this is a little bit about me.</li>
                     <li>This will be altered but this is a little bit about me.</li>

@@ -3,6 +3,7 @@
     <div id="display-box">
       <div id="box-top">
         <bot ref="bot" />
+        <pomo ref="pomo" v-show="showTimer" />
       </div>
       <div id="chat-content"></div>
     </div>
@@ -17,9 +18,6 @@
       />
       <button id="enter-button" @click.prevent="submit(userInput)">Chat</button>
     </div>
-    <div>
-      <pomodoro ref="pomo" />
-    </div>
   </div>
 </template>
 
@@ -29,13 +27,13 @@ import catFactApi from "@/services/CatFactWebApi.js";
 import motivationalApi from "@/services/MotivationalWebApi.js";
 import bot from "@/components/BotHead.vue";
 import cbApi from "@/services/CBWebApi.js";
-import pomodoro from "./Pomodoro.vue";
+import pomo from "./Pomodoro.vue";
 
 export default {
   name: "chatbox",
   components: {
     bot,
-    pomodoro,
+    pomo,
   },
   created() {
     this.$nextTick(() => {
@@ -49,6 +47,8 @@ export default {
       motivation: [],
       history: [],
       historyOffset: 0,
+      showTimer: false,
+      imageLoad: false,
       greetings: [
         `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
         `Howdy hey ${this.$store.state.user.username}! You look like you need some knowledge! I mean, uh, you look really smart! Sorry, it's my first day +_+`,
@@ -75,14 +75,23 @@ export default {
   methods: {
     submit(text) {
       if (text === "") return;
-      let h = this.history;
-      if (h.length != 0) {
-        h = h.slice(0, h.length - this.historyOffset);
+      text = text.replaceAll(";", "")
+        .replaceAll("\\", "")
+        .replaceAll("/", "")
+        .replaceAll("#", "")
+        .replaceAll("%", "")
+        .replaceAll("[", "")
+        .replaceAll("]", "")
+        .replaceAll("?", "")
+        .replaceAll(".", "");
+      if (text === "") {
+        this.userInput = "";
+        return;
       }
-      this.historyOffset = 0;
       this.history.push(text);
-      this.deployElement(this.buildText(text, false));
-      this.parseInput();
+      this.historyOffset = 0;
+      this.deployElement(this.buildText(this.userInput, false));
+      this.parseInput(text);
     },
 
     processResponse(response) {
@@ -169,7 +178,9 @@ export default {
       let img = document.createElement("img");
       img.src = url;
       img.alt = text;
+      img.rel = "preload";
       this.insertElement(a, img);
+      this.imageLoad = true;
       return a;
     },
 
@@ -185,13 +196,19 @@ export default {
 
     injectDivIntoChatbox(div, isBot) {
       let box = document.getElementById("chat-content");
+      let children = box.childElementCount;
       box.insertAdjacentElement("beforeend", div);
-      this.$nextTick(() => {
-        document.getElementById(
-          "chat-content"
-        ).scrollTop = document.getElementById("chat-content").scrollHeight;
-      });
+      while (children === box.childElementCount) this.$nextTick(() => null);
+      if (this.imageLoad) {
+        setTimeout(() => {this.scrollToBottom();}, 50);
+      } else this.scrollToBottom();
       if (isBot) this.$refs.bot.talk();
+      this.imageLoad = false;
+    },
+
+    scrollToBottom() {
+      document.getElementById("chat-content").scrollTop =
+      document.getElementById("chat-content").scrollHeight;
     },
 
     getJoke() {
@@ -240,11 +257,19 @@ export default {
       });
     },
 
-    parseInput() {
-      let input = this.userInput.toLowerCase();
+    setTimer(input) {
+      let num = input.split(' ').map(i => parseInt(i)).find(i => Number.isInteger(i));
+      if (num) this.$refs.pomo.setTime(num);
+    },
+
+    parseInput(input) {
+      input = input.toLowerCase();
       if (input.includes("joke")) this.getJoke();
       else if (input.includes("cat")) this.getCatFact();
       else if (input.includes("motivation")) this.getMotivation();
+      else if (input.includes("timer") && input.includes("show")) this.showTimer = true;
+      else if (input.includes("timer") && input.includes("hide")) this.showTimer = false;
+      else if (input.includes("timer ") && this.showTimer) this.setTimer(input);
       else if (
         input.includes("about chatbot") ||
         input.includes("about yourself")
@@ -394,7 +419,7 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
   max-width: 60%;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 textarea,
