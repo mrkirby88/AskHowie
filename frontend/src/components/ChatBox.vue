@@ -5,7 +5,7 @@
         <bot ref="bot" />
         <pomo ref="pomo" v-show="showTimer" />
       </div>
-      <div id="chat-content"></div>
+      <div id="chat-content" v-on:></div>
     </div>
     <div id="input-box">
       <input
@@ -30,17 +30,29 @@ import ahApi from "@/services/AHWebApi.js";
 import pomo from "./Pomodoro.vue";
 
 export default {
+
   name: "chatbox",
+
   components: {
     bot,
     pomo,
   },
+
   created() {
     this.$nextTick(() => {
       let r = Math.floor(Math.random() * this.greetings.length);
       this.deployElement(this.buildText(this.greetings[r]), true);
+      this.setChatHeight();
     });
   },
+
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.setChatHeight();
+      this.scrollToBottom();
+    });
+  },
+
   data() {
     return {
       userInput: "",
@@ -75,7 +87,8 @@ export default {
   methods: {
     submit(text) {
       if (text === "") return;
-      text = text.replaceAll(";", "")
+      text = text
+        .replaceAll(";", "")
         .replaceAll("\\", "")
         .replaceAll("/", "")
         .replaceAll("#", "")
@@ -200,7 +213,9 @@ export default {
       box.insertAdjacentElement("beforeend", div);
       while (children === box.childElementCount) this.$nextTick(() => null);
       if (this.imageLoad) {
-        setTimeout(() => {this.scrollToBottom();}, 50);
+        setTimeout(() => {
+          this.scrollToBottom();
+        }, 50);
       } else this.scrollToBottom();
       if (isBot) this.$refs.bot.talk();
       this.imageLoad = false;
@@ -208,7 +223,7 @@ export default {
 
     scrollToBottom() {
       document.getElementById("chat-content").scrollTop =
-      document.getElementById("chat-content").scrollHeight;
+        document.getElementById("chat-content").scrollHeight;
     },
 
     getJoke() {
@@ -258,8 +273,17 @@ export default {
     },
 
     setTimer(input) {
-      let num = input.split(' ').map(i => parseInt(i)).find(i => Number.isInteger(i));
+      let num = input
+        .split(" ")
+        .map((i) => parseInt(i))
+        .find((i) => Number.isInteger(i));
       if (num) this.$refs.pomo.setTime(num);
+    },
+
+    timerHelp() {
+      let message =
+        "Timer inputs:\nshow timer - Shows and enables the timer.\nhide timer - Hides and disables the timer.\ntimer {number} - sets the timer for {number} minutes (example: 'timer 10' sets the timer for 10 minutes).";
+      this.deployElement(this.buildText(message), true);
     },
 
     parseInput(input) {
@@ -267,17 +291,21 @@ export default {
       if (input.includes("joke")) this.getJoke();
       else if (input.includes("cat")) this.getCatFact();
       else if (input.includes("motivation")) this.getMotivation();
-      else if (input.includes("timer") && input.includes("show")) this.showTimer = true;
-      else if (input.includes("timer") && input.includes("hide")) this.showTimer = false;
+      else if (input.includes("timer") && input.includes("show"))
+        this.showTimer = true;
+      else if (input.includes("timer") && input.includes("hide"))
+        this.showTimer = false;
       else if (input.includes("timer ") && this.showTimer) this.setTimer(input);
+      else if (input.includes("timer")) this.timerHelp();
       else if (input.includes("help")) {
         this.deployElement(
           this.buildLink(
             "Learn about what you can ask Howie!",
-            "http://localhost:8081/help"), true
+            "http://localhost:8081/help"
+          ),
+          true
         );
-      }
-      else if (
+      } else if (
         input.includes("about askhowie") ||
         input.includes("about yourself") ||
         input === "about"
@@ -285,7 +313,9 @@ export default {
         this.deployElement(
           this.buildLink(
             "Learn more about AskHowie!",
-            "http://localhost:8081/about"), true
+            "http://localhost:8081/about"
+          ),
+          true
         );
       } else {
         this.queryServer(input);
@@ -308,6 +338,13 @@ export default {
         this.userInput = this.history[len - this.historyOffset];
       }
     },
+    
+    setChatHeight() {
+      let height = document.querySelector("#display-box").offsetHeight;
+      let sub = document.querySelector("#box-top").offsetHeight;
+      height = (height - sub) + "px";
+      document.querySelector("#chat-content").style.maxHeight = height;
+    }
   },
 };
 </script>
@@ -318,21 +355,21 @@ export default {
   flex-direction: column;
   height: 75vh;
   width: 76%;
-  align-self: center;  
+  align-self: center;
   position: relative;
   background-color: rgb(25, 34, 58);
   border: 2px solid white;
   border-bottom-width: 0;
 }
 
-#display-box, #input-box {
+#display-box,
+#input-box {
   width: 76%;
 }
 
 #chat-content {
   display: flex;
   width: 100%;
-  max-height: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -341,11 +378,11 @@ export default {
   overflow-wrap: break-word;
 }
 #box-top {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  justify-content: space-evenly;
 }
 ::-webkit-scrollbar {
   border-radius: 20px;

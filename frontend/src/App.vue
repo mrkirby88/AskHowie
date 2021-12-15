@@ -60,7 +60,8 @@
     min-height: 75vh;
   }
   .article-container, .article {
-    background-color:#0b507a
+    background-color:#0b507a;
+    border-radius: 0 0 10px 10px;
   }
   #nav, .article-container {
     margin: 0;
