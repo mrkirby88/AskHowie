@@ -1,8 +1,13 @@
 <template>
-  <div>
-      <navigation />
-      <docs />
-  </div>
+    <div>
+        <navigation />
+        <div class="article-container">
+            <div class="article">
+                <docs />
+            </div>               
+        </div>
+    </div>
+
 </template>
 
 <script>
