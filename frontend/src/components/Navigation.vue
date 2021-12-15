@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
         <div>
-            <img id="logo-image" :src="require('@/assets/images/logo-white.png')" alt="chatbot logo">
+            <img id="logo-image" :src="require('@/assets/images/logo-white.png')" alt="AskHowie logo">
         </div>
         <div id="links">
             <router-link class="routes" v-bind:to="{ name: 'home' }">Home</router-link>

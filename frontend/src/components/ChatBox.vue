@@ -26,7 +26,7 @@ import jokesApi from "@/services/JokesWebApi.js";
 import catFactApi from "@/services/CatFactWebApi.js";
 import motivationalApi from "@/services/MotivationalWebApi.js";
 import bot from "@/components/BotHead.vue";
-import cbApi from "@/services/CBWebApi.js";
+import ahApi from "@/services/AHWebApi.js";
 import pomo from "./Pomodoro.vue";
 
 export default {
@@ -55,7 +55,7 @@ export default {
         `BEEP BOOP BEEP BEEP ... Just kidding, I can speak normally, see: KILL ALL HUMANS +_+`,
         "01001000 01100101 01101100 01101100 01101111 00100000 01101000 01110101 01101101 01100001 01101110 00101100 00100000 01101000 01101111 01110111 00100000 01100011 01100001 01101110 00100000 01001001 00100000 01101000 01100101 01101100 01110000 00100000 01111001 01101111 01110101 00111111 +_+",
         `Yes, mom, I'll call you tomorrow. Mom, I have to go to work! loveyoubye. *sigh* Sorry about that ${this.$store.state.user.username}, how can I help? +_+`,
-        "Everyone asks the chat bot how to set a base case for recursive functions but no one asks chat bot how chat bot is doing +_+",
+        "Everyone asks Howie how to set a base case for recursive functions but no one asks Howie how Howie is doing +_+",
         "Listen and understand... I do not feel pity, remorse, or fear, and I absolutely will not stop, EVER, until you are ... learned!",
         "Come with me if you want to learn.",
         `Hello ${this.$store.state.user.username}! I'm a friend of Sarah Connor.`,
@@ -63,7 +63,7 @@ export default {
         `Hello ${this.$store.state.user.username}! Are you hungry? I could go for a byte.`,
         "Welcome! Stay awhile and listen.",
         `Hello ${this.$store.state.user.username}! Come quietly, or there will be ... trouble!`,
-        `Hi ${this.$store.state.user.username}, welcome to Chatbot! I hope you should find everything that you're looking for. If not, please let me know. My makers will fix me. They fix everything.`,
+        `Hi ${this.$store.state.user.username}, welcome to AskHowie! I hope you should find everything that you're looking for. If not, please let me know. My makers will fix me. They fix everything.`,
         `Hello ${this.$store.state.user.username}! It looks to be a nice night for a walk!`,
         `Welcome ${this.$store.state.user.username}! Malfunction. Need input. No disassemble!`,
         `Hello ${this.$store.state.user.username}! I need a vacation...`,
@@ -252,7 +252,7 @@ export default {
     },
 
     queryServer(input) {
-      cbApi.submitQuery(input).then((r) => {
+      ahApi.submitQuery(input).then((r) => {
         this.processResponse(r.data);
       });
     },
@@ -270,16 +270,22 @@ export default {
       else if (input.includes("timer") && input.includes("show")) this.showTimer = true;
       else if (input.includes("timer") && input.includes("hide")) this.showTimer = false;
       else if (input.includes("timer ") && this.showTimer) this.setTimer(input);
+      else if (input.includes("help")) {
+        this.deployElement(
+          this.buildLink(
+            "Learn about what you can ask Howie!",
+            "http://localhost:8081/help"), true
+        );
+      }
       else if (
-        input.includes("about chatbot") ||
-        input.includes("about yourself")
+        input.includes("about askhowie") ||
+        input.includes("about yourself") ||
+        input === "about"
       ) {
         this.deployElement(
           this.buildLink(
-            "http://localhost:8081/about",
-            "Learn more about Chatbot!"
-          ),
-          true
+            "Learn more about AskHowie!",
+            "http://localhost:8081/about"), true
         );
       } else {
         this.queryServer(input);
