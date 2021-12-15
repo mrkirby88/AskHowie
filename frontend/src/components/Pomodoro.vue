@@ -1,7 +1,5 @@
 <template>
     <div id="app">    
-        <h1 class="title"> Pomodoro </h1>
-            <h2 class="message">{{ message }}</h2>
         
             <div id="timer">
                 <span id="minutes">{{ minutes }}</span>
@@ -27,7 +25,6 @@ export default {
     timer: null,
     totalTime: (25 * 60),
     resetButton: false,
-    message: "Please press start to begin timer."
     
     }
   },
@@ -36,20 +33,20 @@ export default {
     startTimer: function() {
       this.timer = setInterval(() => this.countdown(), 1000);
       this.resetButton = true;
-      this.message = "Timer has started!"
+
     },
     stopTimer: function() {
       clearInterval(this.timer);
       this.timer = null;
       this.resetButton = true;
-      this.message = "Timer has stopped!"
+
     },
     resetTimer: function() {
       this.totalTime = (25 * 60);
       clearInterval(this.timer);
       this.timer = null;
       this.resetButton = false;
-      this.message = "Timer has been reset!"
+ 
     },
     padTime: function(time) {
       return (time < 10 ? '0' : '') + time;
@@ -82,13 +79,8 @@ export default {
 #app {
     display: flex;
     width: 25%;
-    height: 10%;
-    margin: 5%;
-    background-color: blue;
-    border-radius: 25px;
-    border-style: solid;
-    border-color: red;
-    
+    margin: 5% 0 15px;
+
 }
 .title{
     display: flex;
@@ -100,11 +92,9 @@ export default {
   font-size: 50px;
   margin: 0 15% 5% 15%;
   display: inline-block;
-  border-style: groove;
-  border-color: black;
-  background-color: black;
+  background-color: rgb(25, 34, 58);
   color: white;
-  
+
 }
 .message{
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri;

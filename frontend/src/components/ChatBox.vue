@@ -3,6 +3,7 @@
         <div id="display-box">
             <div id="box-top">
                 <bot ref="bot" />
+                <pomo ref="pomo" />
            
             </div>
             <div id="chat-content">
@@ -12,9 +13,6 @@
             <input id="chat-input" type="text" v-model="userInput" @keyup.enter="submit(userInput)">
             <button id="enter-button" @click.prevent="submit(userInput)">Chat</button>
         </div>
-    <div>
-             <pomodoro ref="pomo" />
-    </div>
     </div>
 </template>
 
@@ -24,14 +22,14 @@ import catFactApi from '@/services/CatFactWebApi.js';
 import motivationalApi from '@/services/MotivationalWebApi.js';
 import bot from '@/components/BotHead.vue';
 import cbApi from '@/services/CBWebApi.js';
-import pomodoro from './Pomodoro.vue';
+import pomo from './Pomodoro.vue';
 
 
 export default {
     name: "chatbox",
     components: {
         bot,
-        pomodoro
+        pomo
     },
 
     created() {
@@ -255,8 +253,9 @@ export default {
 #box-top {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: center;
+    justify-content: space-evenly;
 }
 ::-webkit-scrollbar {
     border-radius: 20px;
