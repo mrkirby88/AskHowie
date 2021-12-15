@@ -66,7 +66,7 @@
     margin: 0 12%;
   }
   #nav {
-    background-color: white;
+    background-color: rgba(251,251,251,255);
     display: flex;
     flex-direction: row;
     align-items: center;

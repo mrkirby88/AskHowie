@@ -111,11 +111,17 @@ VALUES ((SELECT r_id FROM responses WHERE title = 'Dress'), (SELECT l_id FROM li
 INSERT INTO responses (title, description)
 VALUES ('array', ' special data type found in almost all programming languages. They make it more convenient to work with values in aggregate rather than a series of individual variables.');
 INSERT INTO links (name, txt, url)
-VALUES ('array', 'Java / C# Book: Arrays','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
+VALUES ('java_array', 'Link to what is an array for Java','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
+INSERT INTO links (name, txt, url)
+VALUES ('C#_array', 'Link to what is an array for C#','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html');
 INSERT INTO keywords (keyword, r_id)
-VALUES ('array', (SELECT r_id FROM responses WHERE title = 'array'));
+VALUES ('java_array', (SELECT r_id FROM responses WHERE title = 'array'));
+INSERT INTO keywords (keyword, r_id)
+VALUES ('C#_array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'array'));
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
 
 
 

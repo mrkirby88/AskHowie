@@ -109,7 +109,8 @@ export default {
           let e = this.buildLink(match, "#");
           e.target = "";
           e.addEventListener("click", () => {
-            this.parseInput(match);
+            this.userInput = match;
+            this.parseInput();
           });
           this.insertElement(div, e);
         }
