@@ -1,7 +1,8 @@
 <template>
     <div class="main">
       <navigation />
-        <div class="article">
+      <div class="article-container">
+         <div class="article">
             <h1> About Chatbot</h1>
                 <p>Welcome to Chatbot, the revolutionary way to fetch information from the internet! Who needs google when you have Chatbot at your disposal?
                     Chatbot is an interactive way that can assist you in elevating your skills by giving you information to ensure you will be at your best for landing 
@@ -32,7 +33,9 @@
                     <li>One of my favorite hobbies is I love to use my smoker for different meats! It is quite the tasty challenge!</li>
                     <li>I graduated from West Virginia University and bleed gold and blue! Go Mountaineers!!.</li>
                     <li>"Your life does not get better by chance, it gets better by change." - Jim Rohn.</li>
-        </div>
+        </div> 
+      </div>
+        
         <body>
         </body>
     </div>

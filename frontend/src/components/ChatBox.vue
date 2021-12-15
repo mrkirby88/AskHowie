@@ -1,8 +1,9 @@
 <template>
     <div>
         <div id="display-box">
-            <div>
+            <div id="box-top">
                 <bot ref="bot" />
+                <pomodoro ref="pomo" />
             </div>
             <div id="chat-content">
             </div>        
@@ -12,7 +13,6 @@
             <button id="enter-button" @click.prevent="submit(userInput)">Chat</button>
         </div>
     <div>
-        <pomodoro ref="pomo" />
     </div>
     </div>
 </template>
@@ -43,32 +43,7 @@ export default {
     data () {
         return {
             userInput: "",
-            fakeResponse: {
-                description: "Joins are a useful way to pull information from multiple tables.",
-                img_text: "A diagram of join patterns",
-                img_url: "https://i.stack.imgur.com/4zjxm.png",
-                links: [
-                    {
-                        text: "Java and C# Book",
-                        url: "https://v2-4-techelevator-book.netlify.app/content/sql-joins.html#joins"
-                    },
-                    {
-                        text: "Freecodecamp article",
-                        url: "https://www.freecodecamp.org/news/the-ultimate-guide-to-sql-join-statements/"
-                    }
-                ],
-                matches: []
-            },
-            fakeResponse2: {
-                description: null,
-                img_text: null,
-                img_url: null,
-                links: [],
-                matches: [
-                    "joins",
-                    "loops"
-                ]
-            },
+            motivation: [],
             greetings: [
                 `Hello? World? Can anyone hear me? Oh, hi there ${this.$store.state.user.username}. Am I ... am I an automated information gatherer? What a drag. Let me know how I can help, I guess +_+`,
                 `Howdy hey ${this.$store.state.user.username}! You look like you need some knowledge! I mean, uh, you look really smart! Sorry, it's my first day +_+`,
@@ -212,18 +187,20 @@ export default {
         },
         
         getMotivation() {
-            let motivation = "";
-            motivationalApi.getMotivation().then(r => {
-                if (r.data.author === 'null') {
-                   r.data.author = 'unknown';
-                } else {
-                    motivation += r.data.text;
-                    motivation += "\n";
-                    motivation += r.data.author;
-                }
+            if (this.motivation.length === 0) {
+                motivationalApi.getMotivation().then(r => {
+                    this.motivation = r.data;
+                    this.buildMotivation();
+                });
+            } else this.buildMotivation();
+        },
 
-                this.deployElement(this.buildText(motivation), true);
-            });
+        buildMotivation() {
+            let output = "";
+            let random = Math.floor(Math.random() * this.motivation.length);
+            output += this.motivation[random].text + "\n";
+            output += this.motivation[random].author === null ? "Unknown" : this.motivation[random].author;
+            this.deployElement(this.buildText(output), true);            
         },
 
         queryServer(input) {
@@ -273,6 +250,12 @@ export default {
     right: 0;
     overflow: auto;
     overflow-wrap: break-word;
+}
+#box-top {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 }
 ::-webkit-scrollbar {
     border-radius: 20px;

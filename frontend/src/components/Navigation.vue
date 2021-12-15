@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
-        <div id="image">
-            <img :src="require('@/assets/images/chatbot_cropped.png')" alt="chatbot logo">
+        <div>
+            <img id="logo-image" :src="require('@/assets/images/chatbot_cropped.png')" alt="chatbot logo">
         </div>
         <div id="links">
             <router-link class="routes" v-bind:to="{ name: 'home' }">Home</router-link>
@@ -24,10 +24,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-     img {
-    max-height: 120px;
+    #logo-image {
+        max-height: 120px;
     }
 
     .routes:hover{

@@ -53,12 +53,15 @@
   .article{
     display: flex;
     flex-direction: column;
-    background-color: #0b507a;
+    align-self: center;
     color: #dfdfdf;
-    padding: 326px;
     padding-top: 10px;
+    width: 900px;
   }
-  #nav, .article{
+  .article-container, .article {
+    background-color:#0b507a
+  }
+  #nav, .article-container{
     margin: 0 11.6%;
   }
   #nav {

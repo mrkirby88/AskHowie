@@ -1,8 +1,11 @@
 <template>
-<div class="article">
-    <h1 class="homeTextColor">Home</h1>
-    <p class="homeTextColor">Welcome to ChatBot, {{user}}!</p>
-</div>
+    <div class="article-container">
+        <div class="article">
+            <h1 class="homeTextColor">Home</h1>
+            <p class="homeTextColor">Welcome to ChatBot, {{user}}!</p>
+        </div>
+    </div>
+
 </template>
 
 <script>
