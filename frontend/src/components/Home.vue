@@ -2,7 +2,7 @@
     <div class="article-container">
         <div class="article">
             <h1 class="homeTextColor">Home</h1>
-            <p class="homeTextColor">Welcome to ChatBot, {{user}}!</p>
+            <p class="homeTextColor">Welcome to AskHowie, {{user}}!</p>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
     };
 </script>
 
-<style scoped>
+<style>
 
 .homeTextColor{
     color: #dcdceb;

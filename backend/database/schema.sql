@@ -53,6 +53,7 @@ CREATE TABLE "responses_links" (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('kenton','$2a$10$O412a/41UuKOjg0TWOb/geach7N3eTlvrsKffUK4L1HXOf1gw57DG', 'ROLE_USER');
 
 
 COMMIT TRANSACTION;
@@ -98,8 +99,8 @@ VALUES ('LinkedIn', (SELECT r_id FROM responses WHERE title = 'LinkedIn'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'LinkedIn'), (SELECT l_id FROM links WHERE name ILIKE 'LinkedIn'));
 
-INSERT INTO responses (title, description)
-VALUES ('Dress', 'Tips on how to dress for interview');
+INSERT INTO responses (title, description, img_text, img_url)
+VALUES ('Dress', 'Tips on how to dress for interview', 'Infographic on how to dress', 'https://previews.dropbox.com/p/thumb/ABZY3bN7C4_YnJWeczO8f2MuxYSEb33A56NgxMU2V-LAKrQjmIAZRJB3IYyndnoKJmyt_WizvdHsX-nbMm_nqBMsvM65MPynxLdKIimGHN5qoDD11JX3uOSLXfAlNNNiD4IrDn4ZTE_1v6vVYz_BcrusrCZsipN7Igqr9eRHMHc5FzfSenNA5ubK8OOgcGhaHnO92pVLj3nnDU4HHnkVpp7wPbgTMzuzKJRVLEOJzJFdQ5-VYPoiEclKzNpGtvKvXBkCbBYtCs2BUieLiXE5klPFEF7QclFdaO_MJSdGY0KRPKzN2EBZh7ECHdSOqZD1O9qkQbTnBH9El79TG9Y6RZw7Iou0WzTLfbVA2H0YHBzSNQ/p.jpeg');
 INSERT INTO links (name, txt, url)
 VALUES ('Dress', 'Dress Tips','https://drive.google.com/file/d/1bYvVX99x7g-t3ii0fiUiKUH2VlDYJARw/view?usp=sharing');
 INSERT INTO keywords (keyword, r_id)

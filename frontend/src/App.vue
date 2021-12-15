@@ -56,19 +56,21 @@
     align-self: center;
     color: #dfdfdf;
     padding-top: 10px;
+    padding-bottom: 50px;
     width: 900px;
   }
   .article-container, .article {
     background-color:#0b507a
   }
   #nav, .article-container{
-    margin: 0 11.6%;
+    margin: 0 12%;
   }
   #nav {
     background-color: rgba(251,251,251,255);
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 5px;
     }
   #links {
     display: flex;
@@ -78,6 +80,12 @@
     flex-grow: .6;
     font-size: 1.3rem;
     }
+  .form-control {
+    background-color: white;
+  }
+  button.form-control {
+    color: black;
+  }
     
 
 </style>

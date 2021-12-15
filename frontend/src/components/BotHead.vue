@@ -50,8 +50,8 @@ export default {
 
 <style scoped>
 #bot-ball {
-    background-color: orange;
-    color: orange;
+    background-color: orangered;
+    color: orangered;
     width: 25px;
     line-height: 25px;
     margin: 5px auto -2px auto;
