@@ -78,38 +78,6 @@ export default {
 </script>
 
 <style>
-#bot-ball {
-    background-color: orangered;
-    color: orangered;
-    width: 25px;
-    line-height: 25px;
-    margin: 10px auto -2px auto;
-    border-radius: 50%;
-    float: none;
-}
-#bot-antenna {
-    background-color: gray;
-    color: gray;
-    line-height: 30px;
-    width: 10px;
-    margin: auto;
-}
-#bot-face {
-    text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    margin: 0 5px;
-    font-size: 90px;
-    padding: 0;
-    padding-bottom: 10px;
-    color: rgb(92, 255, 92);
-    line-height: 5rem;
-}
-#bot-head {
-    padding: 0 5px 15px 5px;
-    margin: 0 10px 20px 20px;
-    background-color: gray;
-    border-radius: 30px;
-}
 .logo, .logo-3 {
     display: flex;
     flex-direction: row;
