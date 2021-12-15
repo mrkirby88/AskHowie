@@ -31,9 +31,12 @@ export default {
     }
 
     .routes:hover{
-        color: #166ca1;
+        color: orangered
     }
     .routes{
         color: #0b507a;
+        text-decoration: none;
+        font-size: 25px;
     }
+    
 </style>

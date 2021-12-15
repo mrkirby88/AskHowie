@@ -82,12 +82,7 @@ export default {
     margin: 5% 0 15px;
 
 }
-.title{
-    display: flex;
-    align-self: center;
-    text-decoration: underline;
 
-}
 #timer {
   font-size: 50px;
   margin: 0 15% 5% 15%;
@@ -96,14 +91,7 @@ export default {
   color: white;
 
 }
-.message{
- font-family: 'Gill Sans', 'Gill Sans MT', Calibri;
- margin: 10%;  
-border-style: groove;
-border-color: black;
-background-color: black;
-color: white;
-}
+
 #buttons {
 display: flex; 
 flex-direction: row;

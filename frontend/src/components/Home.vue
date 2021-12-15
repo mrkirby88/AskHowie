@@ -19,7 +19,7 @@
     };
 </script>
 
-<style scoped>
+<style>
 
 .homeTextColor{
     color: #dcdceb;
