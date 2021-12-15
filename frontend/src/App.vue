@@ -63,7 +63,7 @@
     background-color:#0b507a
   }
   #nav, .article-container{
-    margin: 0 11.6%;
+    margin: 0 12%;
   }
   #nav {
     background-color: rgba(251,251,251,255);

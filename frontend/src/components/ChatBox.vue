@@ -309,10 +309,11 @@ export default {
   overflow-wrap: break-word;
 }
 #box-top {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    justify-content: space-evenly;
 }
 ::-webkit-scrollbar {
   border-radius: 20px;
