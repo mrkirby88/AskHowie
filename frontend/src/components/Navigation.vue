@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
-        <div id="image">
-            <img class="nav-logo" :src="require('@/assets/images/logo-white.png')" alt="chatbot logo">
+        <div>
+            <img id="logo-image" :src="require('@/assets/images/chatbot_cropped.png')" alt="chatbot logo">
         </div>
         <div id="links">
             <router-link class="routes" v-bind:to="{ name: 'home' }">Home</router-link>
@@ -26,30 +26,14 @@ export default {
 
 <style>
 
-    #nav {
-        background-color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
+    #logo-image {
+        max-height: 120px;
     }
 
-    .nav-logo {
-        max-height: 60px;
-        align-self: center;
-    }
-
-    #links {
-        display: flex;
-        width: 25%;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-right: 100px;
-        font-size: 1.3rem;
-    }
     .routes:hover{
-        color: rgb(158, 76, 158);
+        color: #166ca1;
     }
-
+    .routes{
+        color: #0b507a;
+    }
 </style>

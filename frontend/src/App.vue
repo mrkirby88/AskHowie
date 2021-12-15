@@ -11,7 +11,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
   body {
-    background-color: rgba(72, 87, 95, 0.959);
+    background-color: rgb(26, 28, 30);
     font-family: 'Inter', sans-serif;
   }
 
@@ -53,13 +53,31 @@
   .article{
     display: flex;
     flex-direction: column;
-    align-items: left;
-    background-color: #0b507a;
+    align-self: center;
     color: #dfdfdf;
-    min-height: 100vw;
-    width: 800px;
-    margin: auto;
-    padding: 40px;
+    padding-top: 10px;
+    width: 900px;
   }
+  .article-container, .article {
+    background-color:#0b507a
+  }
+  #nav, .article-container{
+    margin: 0 11.6%;
+  }
+  #nav {
+    background-color: rgba(251,251,251,255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+  #links {
+    display: flex;
+    width: 35%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: .6;
+    font-size: 1.3rem;
+    }
+    
 
 </style>
