@@ -102,26 +102,21 @@ VALUES ((SELECT r_id FROM responses WHERE title = 'LinkedIn'), (SELECT l_id FROM
 INSERT INTO responses (title, description, img_text, img_url)
 VALUES ('Dress', 'Tips on how to dress for interview', 'Infographic on how to dress', 'https://previews.dropbox.com/p/thumb/ABZY3bN7C4_YnJWeczO8f2MuxYSEb33A56NgxMU2V-LAKrQjmIAZRJB3IYyndnoKJmyt_WizvdHsX-nbMm_nqBMsvM65MPynxLdKIimGHN5qoDD11JX3uOSLXfAlNNNiD4IrDn4ZTE_1v6vVYz_BcrusrCZsipN7Igqr9eRHMHc5FzfSenNA5ubK8OOgcGhaHnO92pVLj3nnDU4HHnkVpp7wPbgTMzuzKJRVLEOJzJFdQ5-VYPoiEclKzNpGtvKvXBkCbBYtCs2BUieLiXE5klPFEF7QclFdaO_MJSdGY0KRPKzN2EBZh7ECHdSOqZD1O9qkQbTnBH9El79TG9Y6RZw7Iou0WzTLfbVA2H0YHBzSNQ/p.jpeg');
 INSERT INTO links (name, txt, url)
-VALUES ('Dress', 'Dress Tips','https://drive.google.com/file/d/1bYvVX99x7g-t3ii0fiUiKUH2VlDYJARw/view?usp=sharing');
+VALUES ('Dress', 'Dress Tips','https://www.dropbox.com/s/k7ajln1vhzmnz22/how_to_dress.jpeg?dl=0');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('Dress', (SELECT r_id FROM responses WHERE title = 'Dress'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'Dress'), (SELECT l_id FROM links WHERE name ILIKE 'Dress'));
 
 INSERT INTO responses (title, description)
-VALUES ('array', ' special data type found in almost all programming languages. They make it more convenient to work with values in aggregate rather than a series of individual variables.');
+VALUES ('array', 'When you want to work with collections of values, you use arrays. Rather than creating multiple variables, you create a single variable name that can represent multiple values.');
 INSERT INTO links (name, txt, url)
-VALUES ('java_array', 'Link to what is an array for Java','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
-INSERT INTO links (name, txt, url)
-VALUES ('C#_array', 'Link to what is an array for C#','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html');
+VALUES ('array', 'Java / C# TE Book','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
 INSERT INTO keywords (keyword, r_id)
-VALUES ('java_array', (SELECT r_id FROM responses WHERE title = 'array'));
-INSERT INTO keywords (keyword, r_id)
-VALUES ('C#_array', (SELECT r_id FROM responses WHERE title = 'array'));
+VALUES ('array', (SELECT r_id FROM responses WHERE title = 'array'));
+
 INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'java_array'));
-INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'C#_array'));
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'array'));
 
 
 
