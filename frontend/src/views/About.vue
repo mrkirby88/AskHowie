@@ -15,10 +15,12 @@
                     <li>My hobbies include biking, writing electronic music, gaming, and sneaking cheeky recursive functions in my Tech Elevator homework to see if anyone's paying attention.</li>
                     <li>My background is in classical trumpet performance.</li>
                     <li>Word across cable / swim like fish to bearded friend / but is he listen? -Brian</li>
+                <img class="image" src="../assets/images/ChrisNicolettiPicture.jpg" />
                 <h3 class="names">Christopher Nicoletti</h3>
-                    <li>This will be altered but this is a little bit about me.</li>
-                    <li>This will be altered but this is a little bit about me.</li>
-                    <li>This will be altered but this is a little bit about me.</li>
+                    <li> I can quote almost any episode of "It's Always Sunny in Philadelphia"</li>
+                    <li>I have had a bunch of extra roles in some Netflix series.</li>
+                    <li> I owned the highest rank in Halo 3 which was a level 50 in multiple ranked game modes including slayer, Team objective, doubles, and swat.</li>
+                    <li> "Home is where you make it!" -Rambling guy from the movie Joe Dirt</li>
                 <img class="image" src="../assets/images/NateODonnellPicture.png" />
                 <h3 class="names">Nathan O'Donnell</h3>
                     <li>I enjoy gaming, collecting various hot sauces, and music trivia.</li>
@@ -27,12 +29,12 @@
                 <h3 class="names">Roman Oliver</h3>
                     <li>My interests include Virtual Reality and 3D Printing.</li>
                     <li>I also enjoy playing ice hockey and building models.</li>
-                    <li>"Society grows great when old men plant trees whose shade they know they shall never sit in." - Anonymous Greek Proverb</li>
+                    <li>"Society grows great when old men plant trees whose shade they know they shall never sit in." -Anonymous Greek Proverb</li>
                 <img class="image" src="../assets/images/MattKirbyPicture.jpg"/>    
                 <h3 class="names">Matthew Kirby</h3>
                     <li>One of my favorite hobbies is I love to use my smoker for different meats! It is quite the tasty challenge!</li>
                     <li>I graduated from West Virginia University and bleed gold and blue! Go Mountaineers!!.</li>
-                    <li>"Your life does not get better by chance, it gets better by change." - Jim Rohn.</li>
+                    <li>"Your life does not get better by chance, it gets better by change." -Jim Rohn.</li>
         </div> 
       </div>
         
