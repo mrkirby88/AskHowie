@@ -81,11 +81,13 @@ export default {
 <style scoped>
 #app {
     display: flex;
-    width: 20%;
+    width: 25%;
     height: 10%;
     margin: 5%;
     background-color: blue;
-    border-radius: 5%;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: red;
     
 }
 .title{

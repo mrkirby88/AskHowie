@@ -2,7 +2,7 @@
     <div>
         <div id="display-box">
             <div>
-                <bot ref="bot" />
+                <bot ref="bot"  />
             </div>
             <div id="chat-content">
             </div>        
@@ -11,9 +11,7 @@
             <input id="chat-input" type="text" v-model="userInput" @keyup.enter="submit(userInput)">
             <button id="enter-button" @click.prevent="submit(userInput)">Chat</button>
         </div>
-    <div>
-        <pomodoro ref="pomo" />
-    </div>
+           <pomodoro ref="pomo" />
     </div>
 </template>
 
@@ -23,14 +21,14 @@ import catFactApi from '@/services/CatFactWebApi.js';
 import motivationalApi from '@/services/MotivationalWebApi.js';
 import bot from '@/components/BotHead.vue';
 import cbApi from '@/services/CBWebApi.js';
-import Pomodoro from './Pomodoro.vue';
+import pomodoro from './Pomodoro.vue';
 
 
 export default {
     name: "chatbox",
     components: {
         bot,
-        Pomodoro
+        pomodoro
     },
 
     created() {
@@ -366,5 +364,6 @@ textarea:focus, input:focus {
     background-color:rgb(25, 34, 58);
     color: rgb(214, 214, 214);
 }
+
 
 </style>
