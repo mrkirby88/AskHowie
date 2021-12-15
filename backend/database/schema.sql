@@ -313,13 +313,22 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'jobs'), (SELECT l_id FROM links WHERE name ILIKE 'jobs'));
 
 INSERT INTO responses (title, description, img_text, img_url)
-VALUES ('snek', 'Snek!', 'Picture of snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+VALUES ('snek', 'Snek!', 'snekky boi', '<iframe src="https://imgur.com/CjIY62N" width="640" height="480" allow="autoplay"></iframe>');
 INSERT INTO links (name, txt, url)
-VALUES ('snek', 'Picture of Snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+VALUES ('snek', 'Picture of Snek', 'https://imgur.com/CjIY62N');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('snek', (SELECT r_id FROM responses WHERE title = 'snek'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'snek'), (SELECT l_id FROM links WHERE name ILIKE 'snek'));
+
+INSERT INTO responses (title, description, img_text, img_url)
+VALUES ('gundam', 'Gundam figurine', 'Gundams!', '<iframe src="https://imgur.com/atIr2v7" width="640" height="480" allow="autoplay"></iframe>');
+INSERT INTO links (name, txt, url)
+VALUES ('gundam', 'Picture of Gundam', 'https://imgur.com/atIr2v7');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('gundam', (SELECT r_id FROM responses WHERE title = 'gundam'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'gundam'), (SELECT l_id FROM links WHERE name ILIKE 'gundam'));
 
 -- ********************************************************************************
 -- This script creates the database users and grants them the necessary permissions
