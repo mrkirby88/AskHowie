@@ -285,8 +285,41 @@ VALUES ('dao', (SELECT r_id FROM responses WHERE title = 'dao'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'dao'), (SELECT l_id FROM links WHERE name ILIKE 'dao'));
 
+INSERT INTO responses (title, description)
+VALUES ('git', 'Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. Developers primarily use Git for source code management in software development. You can also use it to keep track of changes in any set of files.');
+INSERT INTO links (name, txt, url)
+VALUES ('git', 'link to version control with Git', 'https://v2-4-techelevator-book.netlify.app/content/introduction-to-tools.html#version-control-with-git');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('git', (SELECT r_id FROM responses WHERE title = 'git'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'git'), (SELECT l_id FROM links WHERE name ILIKE 'git'));
 
+INSERT INTO responses (title, description)
+VALUES ('tech event', 'PA Tech Events hosted by Eventbrite:');
+INSERT INTO links (name, txt, url)
+VALUES ('tech event', 'Link to Eventbrite with PA Tech events', 'https://www.eventbrite.com/d/pa--pittsburgh/tech-events/');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('tech event', (SELECT r_id FROM responses WHERE title = 'tech event'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'tech event'), (SELECT l_id FROM links WHERE name ILIKE 'tech event'));
 
+INSERT INTO responses (title, description)
+VALUES ('jobs', 'PGH Career Connector:');
+INSERT INTO links (name, txt, url)
+VALUES ('jobs', 'Link to PGH Career Connector', 'https://www.pghcareerconnector.com/jobs/');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('jobs', (SELECT r_id FROM responses WHERE title = 'jobs'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'jobs'), (SELECT l_id FROM links WHERE name ILIKE 'jobs'));
+
+INSERT INTO responses (title, description, img_text, img_url)
+VALUES ('snek', 'Snek!', 'Picture of snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+INSERT INTO links (name, txt, url)
+VALUES ('snek', 'Picture of Snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('snek', (SELECT r_id FROM responses WHERE title = 'snek'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'snek'), (SELECT l_id FROM links WHERE name ILIKE 'snek'));
 
 -- ********************************************************************************
 -- This script creates the database users and grants them the necessary permissions
