@@ -3,7 +3,7 @@
         <div id="display-box">
             <div id="box-top">
                 <bot ref="bot" />
-                <pomodoro ref="pomo" />
+           
             </div>
             <div id="chat-content">
             </div>        
@@ -13,6 +13,7 @@
             <button id="enter-button" @click.prevent="submit(userInput)">Chat</button>
         </div>
     <div>
+             <pomodoro ref="pomo" />
     </div>
     </div>
 </template>
