@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="display-box">
-            <div>
+            <div id="box-top">
                 <bot ref="bot" />
             </div>
             <div id="chat-content">
