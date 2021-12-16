@@ -40,4 +40,10 @@ export default {
 p {
     margin: 0.2rem;
 }
+    .routes{
+        color: orangered;
+        text-decoration: none;
+        font-size:16px;
+    }
+    
 </style>
