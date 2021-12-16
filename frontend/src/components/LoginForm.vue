@@ -19,6 +19,7 @@
                 type="text"
                 id="username"
                 class="form-control"
+                ref="username"
                 placeholder="Username"
                 v-model="user.username"
                 required
@@ -59,6 +60,11 @@ export default {
       },
       invalidCredentials: false
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.username.focus();
+    })
   },
   methods: {
     login() {

@@ -112,15 +112,15 @@ export default {
   color: #ffffff;
   font-size: 40px;
 }
-.link {
-  color: orange;
-}
 .link,
 .names {
   margin: 0 0 10px;
+  color: white;
+}
+.link:hover {
+  color: orangered;
 }
 .names {
-  color: #f7f7f7;
   font-size: 2em;
 }
 li,

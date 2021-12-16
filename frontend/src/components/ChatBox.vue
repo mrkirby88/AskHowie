@@ -11,6 +11,7 @@
       <input
         id="chat-input"
         type="text"
+        ref="input"
         v-model="userInput"
         @keydown.enter="submit(userInput)"
         @keydown.up.prevent="lastInput"
@@ -51,6 +52,9 @@ export default {
       this.setChatHeight();
       this.scrollToBottom();
     });
+    this.$nextTick(() => {
+      this.focus(this.$refs.input);
+    });
   },
 
   data() {
@@ -84,6 +88,10 @@ export default {
   },
 
   methods: {
+    focus(element) {
+      element.focus();
+    },
+
     submit(text) {
       if (text === "") return;
       this.$store.commit("PUSH_ENTRY", text);
