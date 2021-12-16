@@ -2,7 +2,7 @@
   <div>
     <div id="display-box">
       <div id="box-top">
-        <bot ref="bot" />
+        <bot ref="bot" id="whole-bot" />
         <pomo ref="pomo" v-show="showTimer" />
       </div>
       <div id="chat-content" v-on:></div>
@@ -11,6 +11,7 @@
       <input
         id="chat-input"
         type="text"
+        ref="input"
         v-model="userInput"
         @keydown.enter="submit(userInput)"
         @keydown.up.prevent="lastInput"
@@ -51,13 +52,15 @@ export default {
       this.setChatHeight();
       this.scrollToBottom();
     });
+    this.$nextTick(() => {
+      this.focus(this.$refs.input);
+    });
   },
 
   data() {
     return {
       userInput: "",
       motivation: [],
-      history: [],
       historyOffset: 0,
       showTimer: false,
       imageLoad: false,
@@ -85,23 +88,13 @@ export default {
   },
 
   methods: {
+    focus(element) {
+      element.focus();
+    },
+
     submit(text) {
       if (text === "") return;
-      text = text
-        .replaceAll(";", "")
-        .replaceAll("\\", "")
-        .replaceAll("/", "")
-        .replaceAll("#", "")
-        .replaceAll("%", "")
-        .replaceAll("[", "")
-        .replaceAll("]", "")
-        .replaceAll("?", "")
-        .replaceAll(".", "");
-      if (text === "") {
-        this.userInput = "";
-        return;
-      }
-      this.history.push(text);
+      this.$store.commit("PUSH_ENTRY", text);
       this.historyOffset = 0;
       this.deployElement(this.buildText(this.userInput, false));
       this.parseInput(text);
@@ -123,7 +116,7 @@ export default {
           e.target = "";
           e.addEventListener("click", () => {
             this.userInput = match;
-            this.parseInput();
+            this.parseInput(match);
           });
           this.insertElement(div, e);
         }
@@ -215,7 +208,7 @@ export default {
       if (this.imageLoad) {
         setTimeout(() => {
           this.scrollToBottom();
-        }, 50);
+        }, 100);
       } else this.scrollToBottom();
       if (isBot) this.$refs.bot.talk();
       this.imageLoad = false;
@@ -277,7 +270,8 @@ export default {
         .split(" ")
         .map((i) => parseInt(i))
         .find((i) => Number.isInteger(i));
-      if (num) this.$refs.pomo.setTime(num);
+      if (num && num > 0) this.$refs.pomo.setTime(num);
+      else this.deployElement(this.buildText("To set the timer, please enter a positive whole number after 'timer '."))
     },
 
     timerHelp() {
@@ -324,18 +318,18 @@ export default {
     },
 
     lastInput() {
-      if (this.historyOffset < this.history.length) {
-        let len = this.history.length;
+      if (this.historyOffset < this.$store.state.history.length) {
+        let len = this.$store.state.history.length;
         this.historyOffset++;
-        this.userInput = this.history[len - this.historyOffset];
+        this.userInput = this.$store.state.history[len - this.historyOffset];
       }
     },
 
     nextInput() {
       if (this.historyOffset != 0) {
-        let len = this.history.length;
+        let len = this.$store.state.history.length;
         this.historyOffset--;
-        this.userInput = this.history[len - this.historyOffset];
+        this.userInput = this.$store.state.history[len - this.historyOffset];
       }
     },
     
@@ -412,7 +406,6 @@ export default {
   background-color: rgb(54 54 114);
   transform: translateY(0.5px);
 }
-
 #input-box {
   display: flex;
   flex-direction: row;
@@ -421,43 +414,36 @@ export default {
   border-top-width: 1px;
   border-radius: 0 0 10px 10px;
 }
-
+#whole-bot {
+  margin: 5px;
+}
 .bot-div {
   background-color: rgb(201, 201, 201);
   align-self: flex-start;
 }
-
 .user-div {
   background-color: rgb(92, 227, 247);
   align-self: flex-end;
 }
-
-.bot-div,
-.user-div {
+.bot-div, .user-div {
   border-radius: 15px;
   width: 50%;
   padding: 20px 20px 10px 20px;
   margin: 10px;
 }
-
 .chat-text {
   color: black;
 }
-
 .chat-link {
   color: rgb(0, 38, 255);
 }
-
 .chat-link:hover {
   color: orangered;
 }
-
-.chat-text,
-.chat-link {
+.chat-text, .chat-link {
   margin: 0 0 10px 0;
   text-align: justify;
 }
-
 #chat-content img {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -465,19 +451,14 @@ export default {
   max-width: 50%;
   border-radius: 20px;
 }
-
-textarea,
-input {
+textarea, input {
   background-color: gray;
 }
-
 button {
   background-color: rgb(41, 41, 167);
   color: rgb(214, 214, 214);
 }
-
-textarea:focus,
-input:focus {
+textarea:focus, input:focus {
   outline: none;
   background-color: rgb(25, 34, 58);
   color: rgb(214, 214, 214);

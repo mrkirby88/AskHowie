@@ -9,13 +9,12 @@ import java.util.List;
 @Component
 public interface ResponsesDao {
 
-    String getResponse(String title);
     List<Responses> getAllResponses();
     List<String> getAllTitles();
     List<String> getAllKeywords();
     Responses scanStringForKeyword(String userInput);
-    boolean containsAKeyword (String userInput);
     Responses getASingleResponse(String userInput);
     List<Link> getLinks(String userInput);
+    List<String> getAllTitlesAndKeywords();
 
 }
