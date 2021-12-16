@@ -118,8 +118,203 @@ VALUES ('array', (SELECT r_id FROM responses WHERE title = 'array'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'array'));
 
+INSERT INTO responses (title, description)
+VALUES ('loops', ' a software program or script that repeats the same instructions or processes the same information over and over until receiving the order to stop.');
+INSERT INTO links (name, txt, url)
+VALUES ('loops', 'Link to loops in book', 'https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#loops');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('loops', (SELECT r_id FROM responses WHERE title = 'loops'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'loops'), (SELECT l_id FROM links WHERE name ILIKE 'loops'));
 
+INSERT INTO responses (title, description)
+VALUES ('classes', 'An extensible program-code-template for creating objects.');
+INSERT INTO links (name, txt, url)
+VALUES ('classes','link to classes in book', 'https://v2-4-techelevator-book.netlify.app/content/classes-encapsulation-ool.html#classes');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('classes', (SELECT r_id FROM responses WHERE title = 'classes'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'classes'), (SELECT l_id FROM links WHERE name ILIKE 'classes'));
 
+INSERT INTO responses (title, description)
+VALUES ('inheritance', 'The procedure in which one class inherits the attributes and methods of another class.');
+INSERT INTO links (name, txt, url)
+VALUES ('inheritance','link to inheritance in book', 'https://v2-4-techelevator-book.netlify.app/content/inheritance-ool.html#class-hierarchies');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('inheritance', (SELECT r_id FROM responses WHERE title = 'inheritance'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'inheritance'), (SELECT l_id FROM links WHERE name ILIKE 'inheritance'));
+
+INSERT INTO responses (title, description)
+VALUES ('polymorphism', 'The provision of a single interface to entities of different types, or the use of a single symbol to represent multiple different types.');
+INSERT INTO links (name, txt, url)
+VALUES ('polymorphism','link to polymorphism in book', 'https://v2-4-techelevator-book.netlify.app/content/polymorphism-ool.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('polymorphism', (SELECT r_id FROM responses WHERE title = 'polymorphism'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'polymorphism'), (SELECT l_id FROM links WHERE name ILIKE 'polymorphism'));
+
+INSERT INTO responses (title, description)
+VALUES ('HTML', '(Hypertext Markup Language) is the code that is used to structure a web page and its content.');
+INSERT INTO links (name, txt, url)
+VALUES ('HTML','link to HTML in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-html-css.html#introduction-to-html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('HTML', (SELECT r_id FROM responses WHERE title = 'HTML'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'HTML'), (SELECT l_id FROM links WHERE name ILIKE 'HTML'));
+
+INSERT INTO responses (title, description)
+VALUES ('CSS', '(Cascading Style Sheets) is a language for styling the webpage.');
+INSERT INTO links (name, txt, url)
+VALUES ('CSS','link to CSS in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-html-css.html#introduction-to-css');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('CSS', (SELECT r_id FROM responses WHERE title = 'CSS'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'CSS'), (SELECT l_id FROM links WHERE name ILIKE 'CSS'));
+
+INSERT INTO responses (title, description)
+VALUES ('JavaScript', 'Text-based programming language used both on the client-side and server-side that allows you to make web pages interactive.');
+INSERT INTO links (name, txt, url)
+VALUES ('JavaScript','link to JavaScript in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-to-javascript.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('JavaScript', (SELECT r_id FROM responses WHERE title = 'JavaScript'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'JavaScript'), (SELECT l_id FROM links WHERE name ILIKE 'JavaScript'));
+
+INSERT INTO responses (title, description)
+VALUES ('functions', 'A block of code designed to perform a particular task.');
+INSERT INTO links (name, txt, url)
+VALUES ('functions','link to functions in book', 'https://v2-4-techelevator-book.netlify.app/content/functions-javascript.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('functions', (SELECT r_id FROM responses WHERE title = 'functions'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'functions'), (SELECT l_id FROM links WHERE name ILIKE 'functions'));
+
+INSERT INTO responses (title, description)
+VALUES ('event handling', 'An event handler is a routine that deals with the event, allowing a programmer to write code that is executed when the event occurs.');
+INSERT INTO links (name, txt, url)
+VALUES ('event handling','link to event handling in book', 'https://v2-4-techelevator-book.netlify.app/content/event-handling-javascript.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('event handling', (SELECT r_id FROM responses WHERE title = 'event handling'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'event handling'), (SELECT l_id FROM links WHERE name ILIKE 'event handling'));
+
+INSERT INTO responses (title, description)
+VALUES ('vue', 'an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.');
+INSERT INTO links (name, txt, url)
+VALUES ('vue','link to vue in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-to-vue-and-data-binding.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('vue', (SELECT r_id FROM responses WHERE title = 'vue'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'vue'), (SELECT l_id FROM links WHERE name ILIKE 'vue'));
+
+INSERT INTO responses (title, description)
+VALUES ('router', 'Helps link between the browsers URL/History and Vues components allowing for certain paths to render whatever view is associated with it.');
+INSERT INTO links (name, txt, url)
+VALUES ('router','link to router in book', 'https://v2-4-techelevator-book.netlify.app/content/vue-router.html#getting-started-with-vue-router');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('router', (SELECT r_id FROM responses WHERE title = 'router'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'router'), (SELECT l_id FROM links WHERE name ILIKE 'router'));
+
+INSERT INTO responses (title, description)
+VALUES ('sql', '(structured query language) Is a language for specifying the organization of databases.');
+INSERT INTO links (name, txt, url)
+VALUES ('sql','link to sql in book', 'https://v2-4-techelevator-book.netlify.app/content/introduction-to-SQL.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('sql', (SELECT r_id FROM responses WHERE title = 'sql'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'sql'), (SELECT l_id FROM links WHERE name ILIKE 'sql'));
+
+INSERT INTO responses (title, description)
+VALUES ('joins', 'Used to combine data or rows from two or more tables based on a common field between them.');
+INSERT INTO links (name, txt, url)
+VALUES ('joins','link to sql joins in book', 'https://v2-4-techelevator-book.netlify.app/content/sql-joins.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('joins', (SELECT r_id FROM responses WHERE title = 'joins'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'joins'), (SELECT l_id FROM links WHERE name ILIKE 'joins'));
+
+INSERT INTO responses (title, description)
+VALUES ('insert', 'The INSERT INTO statement is used to insert new records in a table.');
+INSERT INTO links (name, txt, url)
+VALUES ('insert','link to inserting in book', 'https://v2-4-techelevator-book.netlify.app/content/inserts-updates-deletes.html#inserting-new-rows');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('insert', (SELECT r_id FROM responses WHERE title = 'insert'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'insert'), (SELECT l_id FROM links WHERE name ILIKE 'insert'));
+
+INSERT INTO responses (title, description)
+VALUES ('updating', 'The UPDATE statement is used to modify the existing records in a table.');
+INSERT INTO links (name, txt, url)
+VALUES ('updating','link to updating in book', 'https://v2-4-techelevator-book.netlify.app/content/inserts-updates-deletes.html#updating-existing-rows');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('updating', (SELECT r_id FROM responses WHERE title = 'updating'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'updating'), (SELECT l_id FROM links WHERE name ILIKE 'updating'));
+
+INSERT INTO responses (title, description)
+VALUES ('deleting', 'The DELETE statement is used to delete existing records in a table.');
+INSERT INTO links (name, txt, url)
+VALUES ('deleting','link to deleting in book', 'https://v2-4-techelevator-book.netlify.app/content/inserts-updates-deletes.html#deleting-rows');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('deleting', (SELECT r_id FROM responses WHERE title = 'deleting'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'deleting'), (SELECT l_id FROM links WHERE name ILIKE 'deleting'));
+
+INSERT INTO responses (title, description)
+VALUES ('relational', 'A type of database that stores and provides access to data points that are related to one another.');
+INSERT INTO links (name, txt, url)
+VALUES ('relational','link to realtional database design in book', 'https://v2-4-techelevator-book.netlify.app/content/relational-database-design.html#building-a-sample-application-tach-escalator');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('relational', (SELECT r_id FROM responses WHERE title = 'relational'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'relational'), (SELECT l_id FROM links WHERE name ILIKE 'relational'));
+
+INSERT INTO responses (title, description)
+VALUES ('dao', 'An object-based data access interface that provides access to SQL data sources through VBA.');
+INSERT INTO links (name, txt, url)
+VALUES ('dao','link to DAO pattern in book', 'https://v2-4-techelevator-book.netlify.app/content/dao-pattern.html');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('dao', (SELECT r_id FROM responses WHERE title = 'dao'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'dao'), (SELECT l_id FROM links WHERE name ILIKE 'dao'));
+
+INSERT INTO responses (title, description)
+VALUES ('git', 'Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. Developers primarily use Git for source code management in software development. You can also use it to keep track of changes in any set of files.');
+INSERT INTO links (name, txt, url)
+VALUES ('git', 'link to version control with Git', 'https://v2-4-techelevator-book.netlify.app/content/introduction-to-tools.html#version-control-with-git');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('git', (SELECT r_id FROM responses WHERE title = 'git'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'git'), (SELECT l_id FROM links WHERE name ILIKE 'git'));
+
+INSERT INTO responses (title, description)
+VALUES ('tech event', 'PA Tech Events hosted by Eventbrite:');
+INSERT INTO links (name, txt, url)
+VALUES ('tech event', 'Link to Eventbrite with PA Tech events', 'https://www.eventbrite.com/d/pa--pittsburgh/tech-events/');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('tech event', (SELECT r_id FROM responses WHERE title = 'tech event'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'tech event'), (SELECT l_id FROM links WHERE name ILIKE 'tech event'));
+
+INSERT INTO responses (title, description)
+VALUES ('jobs', 'PGH Career Connector:');
+INSERT INTO links (name, txt, url)
+VALUES ('jobs', 'Link to PGH Career Connector', 'https://www.pghcareerconnector.com/jobs/');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('jobs', (SELECT r_id FROM responses WHERE title = 'jobs'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'jobs'), (SELECT l_id FROM links WHERE name ILIKE 'jobs'));
+
+INSERT INTO responses (title, description, img_text, img_url)
+VALUES ('snek', 'Snek!', 'Picture of snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+INSERT INTO links (name, txt, url)
+VALUES ('snek', 'Picture of Snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('snek', (SELECT r_id FROM responses WHERE title = 'snek'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'snek'), (SELECT l_id FROM links WHERE name ILIKE 'snek'));
 
 -- ********************************************************************************
 -- This script creates the database users and grants them the necessary permissions
