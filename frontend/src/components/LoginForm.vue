@@ -19,6 +19,7 @@
                 type="text"
                 id="username"
                 class="form-control"
+                ref="username"
                 placeholder="Username"
                 v-model="user.username"
                 required
@@ -60,6 +61,11 @@ export default {
       invalidCredentials: false
     };
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.username.focus();
+    })
+  },
   methods: {
     login() {
       authService
@@ -68,7 +74,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/chat");
+            this.$router.push("/");
           }
         })
         .catch(error => {

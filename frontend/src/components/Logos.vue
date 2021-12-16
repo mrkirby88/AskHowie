@@ -81,7 +81,6 @@ export default {
 .logo, .logo-3 {
     display: flex;
     flex-direction: row;
-    width: 400px;
     align-items: flex-end;
     background-color: rgb(20, 14, 34);
     background-color: white;
@@ -92,6 +91,25 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     align-items: center;
+    background-color: rgb(0, 178, 248);
+    width: 400px;
+    height: 400px;
+}
+.logo-3 #bot-ball {
+    height: 50px;
+    width: 50px;
+}
+.logo-3 #bot-antenna {
+    height: 70px;
+    width: 20px;
+}
+.logo-3 #bot-face {
+    font-size: 180px;
+    line-height: 160px;
+}
+.logo-3 #bot-head {
+    padding: 0 10px 30px 10px;
+    border-radius: 60px;
 }
 .logo-text, .logo-text-2, .logo-text-3 {
     font-size: 150px;
@@ -107,9 +125,10 @@ export default {
     line-height: 180px;
 }
 h1.logo-text-3 {
-    font-size: 50px;
-    margin: -22px 0 20px 10px;
+    font-size: 78px;
+    margin: 0 0 20px 10px;
     line-height: 20px;
+    color: white;
 }
 .spacer {
     height: 50px;

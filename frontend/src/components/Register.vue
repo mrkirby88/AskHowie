@@ -12,6 +12,7 @@
             type="text"
             id="username"
             class="form-control"
+            ref="username"
             placeholder="Username"
             v-model="user.username"
             required
@@ -40,7 +41,7 @@
           />
         </div>
         <router-link class="haveAccount" :to="{ name: 'login' }">Have an account?</router-link>
-        <button id="button" class="btn btn-lg btn-primary btn-block" type="submit">
+        <button id="button" class="form-control" type="submit">
           Create Account
         </button>
       </form>
@@ -53,6 +54,11 @@ import authService from '../services/AuthService';
 
 export default {
   name: 'register',
+    mounted() {
+    this.$nextTick(() => {
+      this.$refs.username.focus();
+    })
+  },
   data() {
     return {
       user: {
