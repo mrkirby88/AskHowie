@@ -5,8 +5,12 @@ export default {
     getKeywords() {
         return axios.get("/keywords");
     },
+
+    getKeywordsAndTitles() {
+        return axios.get("/titlesandkeys");
+    },
     
     submitQuery(input) {
-        return axios.get(`/search/${input}`);
+        return axios.post("/search", {content: input});
     }
 }

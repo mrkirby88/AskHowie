@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Keywords;
 import com.techelevator.model.Link;
 import com.techelevator.model.Responses;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,12 +18,6 @@ public class JdcbResponsesDao implements ResponsesDao{
 
     public JdcbResponsesDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    @Override
-    public String getResponse(String userInput) {
-        String sql = "select keyword from responses join keywords on responses.r_id = keywords.r_id where title ilike ?";
-        return jdbcTemplate.queryForObject(sql, String.class, userInput);
     }
 
     @Override
@@ -56,9 +49,21 @@ public class JdcbResponsesDao implements ResponsesDao{
         String sql = "SELECT keyword FROM keywords";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()){
-            keywords.add(rowSet.getString("keyword"));
+            keywords.add(rowSet.getString("keyword").toLowerCase());
         }
         return keywords;
+    }
+
+    @Override
+    public List<String> getAllTitlesAndKeywords() {
+        List<String> result = getAllKeywords();
+        for (String word : getAllTitles()) {
+            word = word.toLowerCase();
+            if (!result.contains(word)) {
+                result.add(word);
+            }
+        }
+        return result;
     }
 
     @Override
@@ -70,7 +75,7 @@ public class JdcbResponsesDao implements ResponsesDao{
         String lastKeyword = "";
 
         for(String word : keywords) {
-            if (lowerCase.contains(word.toLowerCase())) {
+            if (lowerCase.contains(word)) {
                 titleMatch.add(getTitleFromKeyword(word));
                 lastKeyword = word;
             }
@@ -88,21 +93,6 @@ public class JdcbResponsesDao implements ResponsesDao{
     private String getTitleFromKeyword(String keyword) {
         String sql = "select title from responses join keywords using(r_id) where keyword ilike ?";
         return jdbcTemplate.queryForObject(sql, String.class, keyword);
-    }
-
-    @Override
-    public boolean containsAKeyword(String userInput) {
-        boolean checkKeyword = false;
-        String getRidOfSpaces = userInput.replaceAll("//s","");
-        String toLowerCase = getRidOfSpaces.toLowerCase();
-        List<String> keywords = getAllKeywords();
-
-        for(String word : keywords) {
-            if (toLowerCase.contains(word)) {
-                checkKeyword = true;
-            }
-        }
-        return checkKeyword;
     }
 
     @Override
