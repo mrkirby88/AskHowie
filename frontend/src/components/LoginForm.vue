@@ -68,7 +68,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/chat");
+            this.$router.push("/");
           }
         })
         .catch(error => {

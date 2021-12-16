@@ -200,7 +200,7 @@ export default {
       if (this.imageLoad) {
         setTimeout(() => {
           this.scrollToBottom();
-        }, 50);
+        }, 100);
       } else this.scrollToBottom();
       if (isBot) this.$refs.bot.talk();
       this.imageLoad = false;

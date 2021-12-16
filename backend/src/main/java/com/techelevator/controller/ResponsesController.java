@@ -41,5 +41,4 @@ public class ResponsesController {
     public Responses searchByStringInBody(@RequestBody String userInput) {
         return responsesDao.scanStringForKeyword(userInput);
     }
-
 }
