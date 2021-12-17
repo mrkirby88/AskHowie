@@ -102,7 +102,6 @@ export default {
 
     processResponse(response) {
       if (response.matches) {
-        let len = response.matches.length;
         let div = this.buildDiv(true);
         this.insertElement(
           div,
@@ -110,8 +109,7 @@ export default {
             "Your query has matched multiple results! Please choose one topic:"
           )
         );
-        for (let i = 0; i < len; i++) {
-          let match = response.matches[i];
+        for (let match of response.matches) {
           let e = this.buildLink(match, "#");
           e.target = "";
           e.addEventListener("click", () => {
@@ -136,10 +134,10 @@ export default {
               : "This link may be of use:"
           )
         );
-        for (let i = 0; i < response.links.length; i++) {
+        for (let link of response.links) {
           this.insertElement(
             div,
-            this.buildLink(response.links[i].txt, response.links[i].url)
+            this.buildLink(link.txt, link.url)
           );
         }
       }
@@ -270,7 +268,10 @@ export default {
         .split(" ")
         .map((i) => parseInt(i))
         .find((i) => Number.isInteger(i));
-      if (num && num > 0) this.$refs.pomo.setTime(num);
+      if (num && num > 0) {
+        this.$refs.pomo.setTime(num);
+        this.deployElement(this.buildText(`Timer set to ${num} minutes!`), true);
+      }
       else this.deployElement(this.buildText("To set the timer, please enter a positive whole number after 'timer '."), true);
     },
 
@@ -285,32 +286,28 @@ export default {
       if (input.includes("joke")) this.getJoke();
       else if (input.includes("cat")) this.getCatFact();
       else if (input.includes("motivation")) this.getMotivation();
-      else if (input.includes("timer") && input.includes("show"))
+      else if (input.includes("timer") && input.includes("show")) {
         this.showTimer = true;
-      else if (input.includes("timer") && input.includes("hide"))
+        this.deployElement(this.buildText("Timer active!"), true);
+      }
+      else if (input.includes("timer") && input.includes("hide")) {
         this.showTimer = false;
+        this.deployElement(this.buildText("Timer inactive!"), true);
+      }
       else if (input.includes("timer ") && this.showTimer) this.setTimer(input);
       else if (input.includes("timer")) this.timerHelp();
       else if (input.includes("help")) {
-        this.deployElement(
-          this.buildLink(
-            "Learn about what you can ask Howie!",
-            "http://localhost:8081/help"
-          ),
-          true
-        );
+        let link = this.buildLink("Learn about what you can ask Howie!", "http://localhost:8081/help");
+        link.target = "_self";
+        this.deployElement(link, true);
       } else if (
         input.includes("about askhowie") ||
         input.includes("about yourself") ||
         input === "about"
       ) {
-        this.deployElement(
-          this.buildLink(
-            "Learn more about AskHowie!",
-            "http://localhost:8081/about"
-          ),
-          true
-        );
+        let link = this.buildLink("Learn more about AskHowie!", "http://localhost:8081/about");
+        link.target = "_self";
+        this.deployElement(link, true);
       } else {
         this.queryServer(input);
       }

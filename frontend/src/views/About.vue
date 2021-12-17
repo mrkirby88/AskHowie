@@ -14,6 +14,9 @@
           pathway director's eye, or just a much needed motivational quote to
           get you through the day; Howie has your back!
         </p>
+        <br>
+
+        <img src="http://localhost:8080/images/askhowiedemo.gif" alt="An animated gif of Howie in action">
 
         <h2 class="title">Meet the Team Behind AskHowie:</h2>
         <img class="image" src="@/assets/images/KentonBandyPicture.jpg" />
@@ -52,6 +55,7 @@
         </ul>
         <img class="image" src="../assets/images/NateODonnellPicture.png" />
         <h3 class="names">Nathan O'Donnell</h3>
+        <a class="link" href="https://github.com/snateo">Github</a>
         <a class="link" href="https://www.linkedin.com/in/nate-odonnell/">LinkedIn</a>
         <ul>
           <li>
@@ -61,6 +65,7 @@
         </ul>
         <img class="image" src="../assets/images/RomanOliverPicture.jpeg" />
         <h3 class="names">Roman Oliver</h3>
+        <a class="link" href="https://github.com/Rohanzeus">Github</a>
         <a class="link" href="https://www.linkedin.com/in/roman-m-oliver/">LinkedIn</a>
         <ul>
           <li>My interests include Virtual Reality and 3D Printing.</li>
@@ -72,6 +77,7 @@
         </ul>
         <img class="image" src="../assets/images/MattKirbyPicture.jpg" />
         <h3 class="names">Matthew Kirby</h3>
+        <a class="link" href="https://github.com/mrkirby88">Github</a>
         <a class="link" href="https://www.linkedin.com/in/matthew-r-kirby/">LinkedIn</a>
         <ul>
           <li>

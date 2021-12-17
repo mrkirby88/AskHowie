@@ -59,12 +59,16 @@ INSERT INTO users (username,password_hash,role) VALUES ('kenton','$2a$10$O412a/4
 COMMIT TRANSACTION;
 
 INSERT INTO responses (title, description)
-VALUES ('Pathway', 'What in pathway is troubling you?');
+VALUES ('Pathway', 'I will give you a link to the Pathway Resource Page, but please ask if you would like to know anything more specific!');
+INSERT INTO links (name, txt, url)
+VALUES ('pathway', 'Pathway Resources Page','https://sites.google.com/techelevator.com/pathwayresourcepage/home');
 INSERT INTO keywords (keyword, r_id)
-VALUES ('Pathway', (SELECT r_id FROM responses WHERE title = 'Pathway'));
+VALUES ('pathway', (SELECT r_id FROM responses WHERE title = 'Pathway'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'Pathway'), (SELECT l_id FROM links WHERE name ILIKE 'pathway'));
 
 INSERT INTO responses (title, description)
-VALUES ('STAR', 'Our pathway program has some great tools for STAR answers');
+VALUES ('STAR', 'The pathway program has some great tools for developing your STAR (Situation Task Action Result) answers.');
 INSERT INTO links (name, txt, url)
 VALUES ('STAR', 'STAR in Pathway','https://docs.google.com/document/d/1NvopfF2vG7LmivZSMYsJ3kwRg8t1WlwpvoSQ2anc9AI/edit');
 INSERT INTO keywords (keyword, r_id)
@@ -73,22 +77,33 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'STAR'), (SELECT l_id FROM links WHERE name ILIKE 'star'));
 
 INSERT INTO responses (title, description)
-VALUES ('Cover Letter', 'Cover Letters are key to a good application');
+VALUES ('Cover Letter', 'Cover Letters are key to a good application.');
 INSERT INTO links (name, txt, url)
+<<<<<<< HEAD
 VALUES ('Cover Letter', 'Cover Letters','https://lmgtfy.app/?q=cover+letter');
+=======
+VALUES ('Cover Letter', 'Glassdoor: Writing a Tech Cover Letter','https://www.glassdoor.com/blog/guide/tech-cover-letter/');
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO keywords (keyword, r_id)
 VALUES ('cover letter', (SELECT r_id FROM responses WHERE title = 'Cover Letter'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'Cover Letter'), (SELECT l_id FROM links WHERE name ILIKE 'cover letter'));
 
 INSERT INTO responses (title, description)
-VALUES ('Interview', 'Some tips for interviewing');
+VALUES ('Interview', 'It is important to be prepared for behavioral and technical interviews!');
 INSERT INTO links (name, txt, url)
+<<<<<<< HEAD
 VALUES ('Interview', 'Interview Tips','https://lmgtfy.app/?q=interview+preparation+tips');
+=======
+VALUES ('interview 101', 'TE Interview 101 Presentation','https://drive.google.com/file/d/1qWi5POEqMZUBkktiqcxiS2HR5PDrr0LR/view');
+INSERT INTO links (name, txt, url)
+VALUES ('technical interview', 'TE Technical Interview Presentation','https://drive.google.com/file/d/1HQjQma_PcP_rQpsA8UW7c9wzsgo2mlFS/view');
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO keywords (keyword, r_id)
-VALUES ('Interview', (SELECT r_id FROM responses WHERE title = 'Interview'));
+VALUES ('interview', (SELECT r_id FROM responses WHERE title = 'Interview'));
 INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'Interview'), (SELECT l_id FROM links WHERE name ILIKE 'Interview'));
+VALUES ((SELECT r_id FROM responses WHERE title = 'Interview'), (SELECT l_id FROM links WHERE name ILIKE 'interview 101'));INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'Interview'), (SELECT l_id FROM links WHERE name ILIKE 'technical interview'));
 
 INSERT INTO responses (title, description)
 VALUES ('LinkedIn', 'Resources for LinkedIn');
@@ -100,9 +115,9 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'LinkedIn'), (SELECT l_id FROM links WHERE name ILIKE 'LinkedIn'));
 
 INSERT INTO responses (title, description, img_text, img_url)
-VALUES ('Dress', 'Tips on how to dress for interview', 'Infographic on how to dress', 'http://localhost:8080/images/how_to_dress.jpeg');
+VALUES ('Dress', 'Knowing how to dress for a tech interview can increase the odds of you making a positive overall impression.', 'Infographic on how to dress', 'http://localhost:8080/images/how_to_dress.jpeg');
 INSERT INTO links (name, txt, url)
-VALUES ('Dress', 'Dress Tips','https://drive.google.com/file/d/1bYvVX99x7g-t3ii0fiUiKUH2VlDYJARw/view?usp=sharing');
+VALUES ('Dress', 'Indeed: What to wear to a tech interview','https://www.indeed.com/career-advice/interviewing/what-to-wear-to-a-tech-interview#:~:text=A%20pair%20of%20dark%20straight,high%20and%20have%20stockings%20underneath.');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('Dress', (SELECT r_id FROM responses WHERE title = 'Dress'));
 INSERT INTO responses_links (r_id, l_id)
@@ -167,7 +182,7 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'polymorphism'), (SELECT l_id FROM links WHERE name ILIKE 'polymorphism'));
 
 INSERT INTO responses (title, description)
-VALUES ('HTML', '(Hypertext Markup Language) is the code that is used to structure a web page and its content.');
+VALUES ('HTML', 'HTML (Hypertext Markup Language) is the code that is used to structure a web page and its content.');
 INSERT INTO links (name, txt, url)
 VALUES ('HTML','HTML in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-html-css.html#introduction-to-html');
 INSERT INTO keywords (keyword, r_id)
@@ -176,7 +191,7 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'HTML'), (SELECT l_id FROM links WHERE name ILIKE 'HTML'));
 
 INSERT INTO responses (title, description)
-VALUES ('CSS', '(Cascading Style Sheets) is a language for styling the webpage.');
+VALUES ('CSS', 'CSS (Cascading Style Sheets) is a style sheet language used for describing the presentation of a document written in a markup language like HTML.');
 INSERT INTO links (name, txt, url)
 VALUES ('CSS','CSS in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-html-css.html#introduction-to-css');
 INSERT INTO keywords (keyword, r_id)
@@ -185,13 +200,25 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'CSS'), (SELECT l_id FROM links WHERE name ILIKE 'CSS'));
 
 INSERT INTO responses (title, description)
-VALUES ('JavaScript', 'Text-based programming language used both on the client-side and server-side that allows you to make web pages interactive.');
+VALUES ('JavaScript', 'JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive.');
 INSERT INTO links (name, txt, url)
 VALUES ('JavaScript','JavaScript in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-to-javascript.html');
+INSERT INTO links (name, txt, url)
+<<<<<<< HEAD
+VALUES ('JavaScript','JavaScript in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-to-javascript.html');
+=======
+VALUES ('Learn JavaScript','FreeCodeCamp: JavaScript Courses', 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/');
+INSERT INTO links (name, txt, url)
+VALUES ('JS web docs','MDN Web Docs', 'https://developer.mozilla.org/en-US/');
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO keywords (keyword, r_id)
 VALUES ('JavaScript', (SELECT r_id FROM responses WHERE title = 'JavaScript'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'JavaScript'), (SELECT l_id FROM links WHERE name ILIKE 'JavaScript'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'JavaScript'), (SELECT l_id FROM links WHERE name ILIKE 'Learn JavaScript'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'JavaScript'), (SELECT l_id FROM links WHERE name ILIKE 'JS web docs'));
 
 INSERT INTO responses (title, description)
 VALUES ('functions', 'A block of code designed to perform a particular task.');
@@ -212,7 +239,7 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'event handling'), (SELECT l_id FROM links WHERE name ILIKE 'event handling'));
 
 INSERT INTO responses (title, description)
-VALUES ('vue', 'an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.');
+VALUES ('vue', 'Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.');
 INSERT INTO links (name, txt, url)
 VALUES ('vue','Vue in book', 'https://v2-4-techelevator-book.netlify.app/content/intro-to-vue-and-data-binding.html');
 INSERT INTO keywords (keyword, r_id)
@@ -230,7 +257,7 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'router'), (SELECT l_id FROM links WHERE name ILIKE 'router'));
 
 INSERT INTO responses (title, description)
-VALUES ('sql', '(structured query language) Is a language for specifying the organization of databases.');
+VALUES ('sql', 'Short for Structured Query Language, SQL, originally known as SEQUEL (structured English query language), was developed by Dr. Edgar F. Codd at the IBM research center in 1974. Today, SQL has become the de facto standard database language.');
 INSERT INTO links (name, txt, url)
 VALUES ('sql','SQL in book', 'https://v2-4-techelevator-book.netlify.app/content/introduction-to-SQL.html');
 INSERT INTO keywords (keyword, r_id)
@@ -262,6 +289,8 @@ INSERT INTO links (name, txt, url)
 VALUES ('updating','Updating in book', 'https://v2-4-techelevator-book.netlify.app/content/inserts-updates-deletes.html#updating-existing-rows');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('updating', (SELECT r_id FROM responses WHERE title = 'updating'));
+INSERT INTO keywords (keyword, r_id)
+VALUES ('update', (SELECT r_id FROM responses WHERE title = 'updating'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'updating'), (SELECT l_id FROM links WHERE name ILIKE 'updating'));
 
@@ -348,7 +377,11 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'branching'), (SELECT l_id FROM links WHERE name ILIKE 'branching'));
 
 INSERT INTO responses (title, description)
+<<<<<<< HEAD
 VALUES ('objects', 'Statements used to jump the flow of execution from one part of a program to another.');
+=======
+VALUES ('objects', 'An object is an in-memory data structure that combines state and behavior into a usable and useful abstraction. In other words, objects are a collection of variables and methods.');
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO links (name, txt, url)
 VALUES ('objects','Intro to Objects in book', 'https://v2-4-techelevator-book.netlify.app/content/introduction-to-objects-ool.html');
 INSERT INTO keywords (keyword, r_id)
@@ -362,6 +395,11 @@ INSERT INTO links (name, txt, url)
 VALUES ('unit testing','Unit Testing in book', 'https://v2-4-techelevator-book.netlify.app/content/unit-testing-ool.html');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('unit testing', (SELECT r_id FROM responses WHERE title = 'unit testing'));
+<<<<<<< HEAD
+=======
+INSERT INTO keywords (keyword, r_id)
+VALUES ('junit', (SELECT r_id FROM responses WHERE title = 'unit testing'));
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'unit testing'), (SELECT l_id FROM links WHERE name ILIKE 'unit testing'));
 
@@ -415,7 +453,11 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'post'), (SELECT l_id FROM links WHERE name ILIKE 'post'));
 
 INSERT INTO responses (title, description)
+<<<<<<< HEAD
 VALUES ('mvc', 'Model-View-Controller this pattern is used to separate application concerns.');
+=======
+VALUES ('mvc', 'The Model-View-Controller pattern is used to separate application concerns.');
+>>>>>>> bfffbeae870e6d6d18a07ce08a580624c6e3f42f
 INSERT INTO links (name, txt, url)
 VALUES ('mvc','MVC in book', 'https://v2-4-techelevator-book.netlify.app/content/exclusive/java/server-side-api-1-java.html#introduction-to-mvc');
 INSERT INTO keywords (keyword, r_id)
