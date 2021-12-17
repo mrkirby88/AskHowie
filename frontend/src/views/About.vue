@@ -16,12 +16,10 @@
         </p>
 
         <h2 class="title">Meet the Team Behind AskHowie:</h2>
-        <img class="image" src="../assets/images/KentonBandyPicture.jpg" />
+        <img class="image" src="@/assets/images/KentonBandyPicture.jpg" />
         <h3 class="names">Kenton Bandy</h3>
         <a class="link" href="https://github.com/kentonbandy">Github</a>
-        <a class="link" href="https://www.linkedin.com/in/kentonbandy/"
-          >LinkedIn</a
-        >
+        <a class="link" href="https://www.linkedin.com/in/kentonbandy/">LinkedIn</a>
         <ul>
           <li>
             My hobbies include biking, writing electronic music, gaming, and
@@ -36,6 +34,7 @@
         </ul>
         <img class="image" src="../assets/images/ChrisNicolettiPicture.jpg" />
         <h3 class="names">Christopher Nicoletti</h3>
+        <a class="link" href="https://www.linkedin.com/in/christopher-nicoletti/">LinkedIn</a>
         <ul>
           <li>
             I can quote almost any episode of "It's Always Sunny in
@@ -53,6 +52,7 @@
         </ul>
         <img class="image" src="../assets/images/NateODonnellPicture.png" />
         <h3 class="names">Nathan O'Donnell</h3>
+        <a class="link" href="https://www.linkedin.com/in/nate-odonnell/">LinkedIn</a>
         <ul>
           <li>
             I enjoy gaming, collecting various hot sauces, and music trivia.
@@ -61,6 +61,7 @@
         </ul>
         <img class="image" src="../assets/images/RomanOliverPicture.jpeg" />
         <h3 class="names">Roman Oliver</h3>
+        <a class="link" href="https://www.linkedin.com/in/roman-m-oliver/">LinkedIn</a>
         <ul>
           <li>My interests include Virtual Reality and 3D Printing.</li>
           <li>I also enjoy playing ice hockey and building models.</li>
@@ -71,6 +72,7 @@
         </ul>
         <img class="image" src="../assets/images/MattKirbyPicture.jpg" />
         <h3 class="names">Matthew Kirby</h3>
+        <a class="link" href="https://www.linkedin.com/in/matthew-r-kirby/">LinkedIn</a>
         <ul>
           <li>
             One of my favorite hobbies is I love to use my smoker for different
