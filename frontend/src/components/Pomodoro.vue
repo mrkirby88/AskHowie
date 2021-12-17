@@ -90,6 +90,7 @@ export default {
 <style scoped>
 #app {
   display: flex;
+  align-items: center;
   width: 25%;
   margin: 5% 0 15px;
 }
@@ -108,7 +109,11 @@ export default {
   justify-content: space-around;
 }
 .button {
-  font-size: 16px;
-  width: 30%;
+  font-size: 20px;
+  padding: 18px;
+  line-height: 0;
+  margin: 0 10px;
+  background-color: white;
+  color: black;
 }
 </style>

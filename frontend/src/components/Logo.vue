@@ -1,5 +1,5 @@
 <template>
-  <div id="logo" @mousedown="openMouth" @mouseup="closeMouth" @mouseleave="mouseLeave" @mouseover="textOrange">
+  <div id="logo" @mousedown.prevent="openMouth" @mouseup="closeMouth" @mouseleave="mouseLeave" @mouseover="textOrange">
         <div>
             <div id="logo-ball" v-bind:style="{backgroundColor: ballColor, color: ballColor}">-</div>
             <div id="logo-antenna">.</div>
