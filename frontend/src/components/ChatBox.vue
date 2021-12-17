@@ -271,7 +271,7 @@ export default {
         .map((i) => parseInt(i))
         .find((i) => Number.isInteger(i));
       if (num && num > 0) this.$refs.pomo.setTime(num);
-      else this.deployElement(this.buildText("To set the timer, please enter a positive whole number after 'timer '."))
+      else this.deployElement(this.buildText("To set the timer, please enter a positive whole number after 'timer '."), true);
     },
 
     timerHelp() {
