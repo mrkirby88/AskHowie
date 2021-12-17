@@ -100,9 +100,9 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'LinkedIn'), (SELECT l_id FROM links WHERE name ILIKE 'LinkedIn'));
 
 INSERT INTO responses (title, description, img_text, img_url)
-VALUES ('Dress', 'Tips on how to dress for interview', 'Infographic on how to dress', 'https://previews.dropbox.com/p/thumb/ABZY3bN7C4_YnJWeczO8f2MuxYSEb33A56NgxMU2V-LAKrQjmIAZRJB3IYyndnoKJmyt_WizvdHsX-nbMm_nqBMsvM65MPynxLdKIimGHN5qoDD11JX3uOSLXfAlNNNiD4IrDn4ZTE_1v6vVYz_BcrusrCZsipN7Igqr9eRHMHc5FzfSenNA5ubK8OOgcGhaHnO92pVLj3nnDU4HHnkVpp7wPbgTMzuzKJRVLEOJzJFdQ5-VYPoiEclKzNpGtvKvXBkCbBYtCs2BUieLiXE5klPFEF7QclFdaO_MJSdGY0KRPKzN2EBZh7ECHdSOqZD1O9qkQbTnBH9El79TG9Y6RZw7Iou0WzTLfbVA2H0YHBzSNQ/p.jpeg');
+VALUES ('Dress', 'Tips on how to dress for interview', 'Infographic on how to dress', 'http://localhost:8080/images/how_to_dress.jpeg');
 INSERT INTO links (name, txt, url)
-VALUES ('Dress', 'Dress Tips','https://www.dropbox.com/s/k7ajln1vhzmnz22/how_to_dress.jpeg?dl=0');
+VALUES ('Dress', 'Dress Tips','https://drive.google.com/file/d/1bYvVX99x7g-t3ii0fiUiKUH2VlDYJARw/view?usp=sharing');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('Dress', (SELECT r_id FROM responses WHERE title = 'Dress'));
 INSERT INTO responses_links (r_id, l_id)
@@ -111,28 +111,40 @@ VALUES ((SELECT r_id FROM responses WHERE title = 'Dress'), (SELECT l_id FROM li
 INSERT INTO responses (title, description)
 VALUES ('array', 'When you want to work with collections of values, you use arrays. Rather than creating multiple variables, you create a single variable name that can represent multiple values.');
 INSERT INTO links (name, txt, url)
-VALUES ('array', 'Java / C# TE Book','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
+VALUES ('array', 'Java / C# TE Book: Arrays','https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#arrays');
+INSERT INTO links (name, txt, url)
+VALUES ('js array', 'FreeCodeCamp: JavaScript Arrays','https://www.freecodecamp.org/news/javascript-standard-objects-arrays/');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('array', (SELECT r_id FROM responses WHERE title = 'array'));
-
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'array'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'array'), (SELECT l_id FROM links WHERE name ILIKE 'js array'));
 
 INSERT INTO responses (title, description)
-VALUES ('loops', ' a software program or script that repeats the same instructions or processes the same information over and over until receiving the order to stop.');
+VALUES ('loops', 'There are three different types of loops that are used in programming:
+
+for loop - used when you want code to repeat a defined number of times—for example, one time for each element in an array
+while loop - used when you want to continually execute a block of code as long as a condition remains true
+do-while loop - used when you want to execute a block of code at least once and repeat it as long as a condition remains true
+The most common loop used is the for loop, though for many of the exercises you complete and perform on the job, any of the loop choices can be substituted.');
 INSERT INTO links (name, txt, url)
-VALUES ('loops', 'Link to loops in book', 'https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#loops');
+VALUES ('loops', 'Java / C# TE Book: Loops', 'https://v2-4-techelevator-book.netlify.app/content/arrays-and-loops-ool.html#loops');
+INSERT INTO links (name, txt, url)
+VALUES ('js loops', 'FreeCodeCamp: Loops in JavaScript', 'https://www.freecodecamp.org/news/javascript-loops-explained-for-loop-for/');
 INSERT INTO keywords (keyword, r_id)
-VALUES ('loops', (SELECT r_id FROM responses WHERE title = 'loops'));
+VALUES ('loop', (SELECT r_id FROM responses WHERE title = 'loops'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'loops'), (SELECT l_id FROM links WHERE name ILIKE 'loops'));
+INSERT INTO responses_links (r_id, l_id)
+VALUES ((SELECT r_id FROM responses WHERE title = 'loops'), (SELECT l_id FROM links WHERE name ILIKE 'js loops'));
 
 INSERT INTO responses (title, description)
-VALUES ('classes', 'An extensible program-code-template for creating objects.');
+VALUES ('classes', 'In object-oriented programming, a class is a set of related objects that share common characteristics. Classes are an important component that makes object-oriented programming a powerful and flexible programming paradigm.');
 INSERT INTO links (name, txt, url)
-VALUES ('classes','link to classes in book', 'https://v2-4-techelevator-book.netlify.app/content/classes-encapsulation-ool.html#classes');
+VALUES ('classes','Java / C# TE Book', 'https://v2-4-techelevator-book.netlify.app/content/classes-encapsulation-ool.html#classes');
 INSERT INTO keywords (keyword, r_id)
-VALUES ('classes', (SELECT r_id FROM responses WHERE title = 'classes'));
+VALUES ('class', (SELECT r_id FROM responses WHERE title = 'classes'));
 INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'classes'), (SELECT l_id FROM links WHERE name ILIKE 'classes'));
 
@@ -308,13 +320,14 @@ INSERT INTO responses_links (r_id, l_id)
 VALUES ((SELECT r_id FROM responses WHERE title = 'jobs'), (SELECT l_id FROM links WHERE name ILIKE 'jobs'));
 
 INSERT INTO responses (title, description, img_text, img_url)
-VALUES ('snek', 'Snek!', 'Picture of snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
-INSERT INTO links (name, txt, url)
-VALUES ('snek', 'Picture of Snek', 'https://files.slack.com/files-pri/T0GNFLF6D-F02QZ06UUEQ/img_20210910_131830.jpg');
+VALUES ('snek', 'This snek lives with Roman, one of my creators!', 'snekky boi', 'http://localhost:8080/images/snek.jpg');
 INSERT INTO keywords (keyword, r_id)
 VALUES ('snek', (SELECT r_id FROM responses WHERE title = 'snek'));
-INSERT INTO responses_links (r_id, l_id)
-VALUES ((SELECT r_id FROM responses WHERE title = 'snek'), (SELECT l_id FROM links WHERE name ILIKE 'snek'));
+
+INSERT INTO responses (title, description, img_text, img_url)
+VALUES ('gundam', 'Roman, one of my creators, made this gundam figurine:', 'Gundams!', 'http://localhost:8080/images/gundam.jpg');
+INSERT INTO keywords (keyword, r_id)
+VALUES ('gundam', (SELECT r_id FROM responses WHERE title = 'gundam'));
 
 -- ********************************************************************************
 -- This script creates the database users and grants them the necessary permissions
