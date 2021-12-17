@@ -5,9 +5,9 @@
     <p>
       AskHowie was designed to provide resources to coding students and
       professionals, with an emphasis on
-      <a href="https://www.techelevator.com/" target="_blank">Tech Elevator</a>
+      <a class="link" href="https://www.techelevator.com/" target="_blank">Tech Elevator</a>
       students and alumni. To interact with Howie, go to the Chat page and input
-      requests. You can simply enter keywords, or enter full sentences - Howie
+      requests. All user input is case-insensitive. You can simply enter keywords, or enter full sentences - Howie
       will do his best to answer your questions!
     </p>
     <br />
@@ -56,6 +56,12 @@ export default {
 <style scoped>
 p {
   margin: 0.2rem;
+}
+.link {
+  color: white;
+}
+.link:hover {
+  color: orangered;
 }
 .routes {
   color: orangered;
