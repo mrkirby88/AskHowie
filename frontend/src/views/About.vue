@@ -14,6 +14,9 @@
           pathway director's eye, or just a much needed motivational quote to
           get you through the day; Howie has your back!
         </p>
+        <br>
+
+        <img src="http://localhost:8080/images/askhowiedemo.gif" alt="An animated gif of Howie in action">
 
         <h2 class="title">Meet the Team Behind AskHowie:</h2>
         <img class="image" src="@/assets/images/KentonBandyPicture.jpg" />
